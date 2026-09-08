@@ -6,6 +6,7 @@ import { routing } from "@/i18n/routing";
 import { fraunces, inter, markaziText, plexArabic } from "@/lib/fonts";
 
 import "./globals.css";
+import Navbar from "@/components/layout/Navbar";
 
 export const metadata: Metadata = {
   title: "Noor Dental Studio",
@@ -48,6 +49,7 @@ export default async function LocaleLayout({ children, params }: Props) {
         }
       >
         <NextIntlClientProvider locale={locale} messages={messages}>
+          <Navbar />
           {children}
         </NextIntlClientProvider>
       </body>
