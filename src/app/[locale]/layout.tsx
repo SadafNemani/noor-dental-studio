@@ -5,7 +5,7 @@ import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
 import { fraunces, inter, markaziText, plexArabic } from "@/lib/fonts";
 
-import "./globals.css";
+import "../globals.css";
 import Navbar from "@/components/layout/Navbar";
 
 export const metadata: Metadata = {
@@ -39,15 +39,7 @@ export default async function LocaleLayout({ children, params }: Props) {
 
   return (
     <html lang={locale} dir={isRTL ? "rtl" : "ltr"} suppressHydrationWarning>
-      <body
-        className={fontVars}
-        style={
-          {
-            "--font-heading": isRTL ? "var(--font-heading-ar)" : "var(--font-heading-en)",
-            "--font-body": isRTL ? "var(--font-body-ar)" : "var(--font-body-en)",
-          } as React.CSSProperties
-        }
-      >
+      <body className={fontVars}>
         <NextIntlClientProvider locale={locale} messages={messages}>
           <Navbar />
           {children}

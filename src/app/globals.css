@@ -37,6 +37,17 @@
   --shadow-soft: 0 20px 40px rgba(35, 36, 25, 0.06);
 }
 
+:root,
+[dir="ltr"] {
+  --font-heading: var(--font-heading-en);
+  --font-body: var(--font-body-en);
+}
+
+[dir="rtl"] {
+  --font-heading: var(--font-heading-ar);
+  --font-body: var(--font-body-ar);
+}
+
 html {
   scroll-behavior: smooth;
 }
