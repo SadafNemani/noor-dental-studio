@@ -1,5 +1,6 @@
 import { type ReactNode } from "react";
 import { cn } from "@/lib/cn";
+import { Link } from "@/i18n/navigation";
 
 type ButtonVariant = "primary" | "ghost";
 
@@ -32,10 +33,18 @@ export default function Button({
   );
 
   if (href) {
+    const isExternal = /^(https?:|tel:|mailto:)/.test(href);
+    if (isExternal) {
+      return (
+        <a href={href} className={classes}>
+          {children}
+        </a>
+      );
+    }
     return (
-      <a href={href} className={classes}>
+      <Link href={href} className={classes}>
         {children}
-      </a>
+      </Link>
     );
   }
 
