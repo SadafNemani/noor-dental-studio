@@ -1,1 +1,21 @@
-{}
+{
+  "nav": {
+    "home": "Home",
+    "yourCare": "Your care",
+    "about": "About",
+    "contact": "Contact",
+    "bookAVisit": "Book a visit",
+    "whatsappLabel": "WhatsApp",
+    "callLabel": "Call the clinic"
+  },
+  "footer": {
+    "hours": "Mon–Sat, 9am–8pm",
+    "location": "Jumeirah, Dubai",
+    "whatsapp": "WhatsApp",
+    "phone": "+971 4 000 0000"
+  },
+  "langToggle": {
+    "switchToArabic": "Switch to Arabic",
+    "switchToEnglish": "Switch to English"
+  }
+}

@@ -1,1 +1,21 @@
-{}
+{
+  "nav": {
+    "home": "الرئيسية",
+    "yourCare": "عنايتك",
+    "about": "نبذة عنا",
+    "contact": "تواصل معنا",
+    "bookAVisit": "احجز زيارة",
+    "whatsappLabel": "واتساب",
+    "callLabel": "اتصل بالعيادة"
+  },
+  "footer": {
+    "hours": "الإثنين–السبت، 9 صباحًا–8 مساءً",
+    "location": "جميرا، دبي",
+    "whatsapp": "واتساب",
+    "phone": "+971 4 000 0000"
+  },
+  "langToggle": {
+    "switchToArabic": "التبديل إلى العربية",
+    "switchToEnglish": "التبديل إلى الإنجليزية"
+  }
+}
