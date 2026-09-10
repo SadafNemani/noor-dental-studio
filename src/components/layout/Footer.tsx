@@ -32,6 +32,7 @@ export default async function Footer() {
             {t("phone")}
           </a>
         </div>
+        <Button href="/booking">{tNav("bookAVisit")}</Button>
       </Container>
     </footer>
   );
