@@ -11,6 +11,7 @@
   --color-stone: #8a8377;
   --color-sand: #ece6dd;
   --color-sage: #7c9473;
+  --color-error: #b3541e;
 
   /* Fonts */
   --font-heading: var(--font-heading-en), serif;
