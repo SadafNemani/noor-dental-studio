@@ -5,6 +5,8 @@ import Arrive from "@/components/motion/Arrive";
 import GradientBlob from "@/components/motion/GradientBlob";
 import { useRouter, usePathname } from "@/i18n/navigation";
 import { useLocale } from "next-intl";
+import Quote from "@/components/typography/Quote";
+import Heading from "@/components/typography/Heading";
 
 export default function TestScenesPage() {
   const router = useRouter();
@@ -23,17 +25,18 @@ export default function TestScenesPage() {
       <PinnedSceneSystem>
         <Scene background="dark">
           <Arrive>
-            <h1 className="font-heading text-h1">Scene one</h1>
+            <Heading>Scene one</Heading>
           </Arrive>
           <Arrive delay={0.1}>
-            <p className="font-body text-body">Testing the pin and crossfade.</p>
+            <Quote>Testing the pin and crossfade.</Quote>
           </Arrive>
         </Scene>
 
         <Scene background="light">
           <GradientBlob className="-top-40 -left-40" />
           <Arrive>
-            <h2 className="font-heading text-h2 text-charcoal">Scene two</h2>
+            <Heading>Scene two</Heading>
+            <Quote>Testing quote</Quote>
           </Arrive>
         </Scene>
       </PinnedSceneSystem>
