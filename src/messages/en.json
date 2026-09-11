@@ -47,5 +47,27 @@
       "body": "Straighten your smile with a plan built around your life, not the other way around.",
       "cta": "Explore Invisalign"
     }
+  },
+  "invisalign": {
+    "journey": {
+      "heading": "Your journey",
+      "consultation": {
+        "title": "Consultation",
+        "desc": "We start with an honest conversation about what you want and whether Invisalign is the right fit."
+      },
+      "scan": {
+        "title": "Digital scan",
+        "desc": "A quick, comfortable 3D scan replaces old-fashioned molds entirely."
+      },
+      "plan": {
+        "title": "Personalised plan",
+        "desc": "You see your projected result before committing to anything."
+      },
+      "align": {
+        "title": "Align",
+        "desc": "Wear your aligners as your smile shifts gradually into place."
+      },
+      "reveal": { "title": "Reveal", "desc": "Your new smile, exactly as planned." }
+    }
   }
 }
