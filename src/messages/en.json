@@ -17,5 +17,35 @@
   "langToggle": {
     "switchToArabic": "Switch to Arabic",
     "switchToEnglish": "Switch to English"
+  },
+  "home": {
+    "help": {
+      "heading": "How can we help you today?",
+      "improveSmile": "Improve my smile",
+      "careForTeeth": "Take care of my teeth",
+      "nervous": "I'm nervous about visiting",
+      "needHelpToday": "I need help today"
+    },
+    "pillars": {
+      "heading": "A different kind of visit.",
+      "clearTitle": "Clear",
+      "clearDesc": "Know what's happening and why.",
+      "calmTitle": "Calm",
+      "calmDesc": "No rushed appointments.",
+      "personalTitle": "Personal",
+      "personalDesc": "Care built around you."
+    },
+    "doctor": {
+      "eyebrow": "Meet Dr. Noor",
+      "quote": "I never want a patient to feel rushed, judged, or unsure of what happens next.",
+      "attribution": "Dr. Noor — founder, Noor Dental Studio",
+      "cta": "Meet Dr. Noor"
+    },
+    "treatment": {
+      "eyebrow": "Invisalign at Noor",
+      "heading": "A smile you can see coming.",
+      "body": "Straighten your smile with a plan built around your life, not the other way around.",
+      "cta": "Explore Invisalign"
+    }
   }
 }

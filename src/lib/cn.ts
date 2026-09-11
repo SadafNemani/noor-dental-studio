@@ -15,6 +15,7 @@ const twMerge = extendTailwindMerge({
             "gold",
             "charcoal",
             "stone",
+            "mist",
             "sand",
             "sage",
             "error",
