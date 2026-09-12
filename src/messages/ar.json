@@ -94,5 +94,35 @@
   },
   "compare": {
     "sliderLabel": "شريط مقارنة بين {before} و{after}"
+  },
+  "booking": {
+    "step1": { "legend": "ما الذي أتى بك؟" },
+    "step2": {
+      "legend": "ما الوقت المناسب لك؟",
+      "morning": "صباحًا",
+      "afternoon": "ظهرًا",
+      "evening": "مساءً",
+      "unavailable": "غير متاح"
+    },
+    "step3": {
+      "nameLabel": "الاسم الكامل",
+      "phoneLabel": "رقم الهاتف",
+      "emailLabel": "البريد الإلكتروني",
+      "notesLabel": "هل هناك شيء تود إخبارنا به قبل زيارتك؟ (اختياري)",
+      "nameError": "الرجاء إدخال اسمك.",
+      "phoneError": "الرجاء إدخال رقم هاتف صحيح.",
+      "emailError": "الرجاء إدخال بريد إلكتروني صحيح."
+    },
+    "confirmation": {
+      "heading": "تم حجز موعدك.",
+      "body": "سنرسل لك كل ما تحتاجه قبل زيارتك.",
+      "backHome": "العودة إلى الرئيسية"
+    },
+    "nav": {
+      "back": "السابق",
+      "next": "التالي",
+      "confirm": "تأكيد الحجز",
+      "stepLabel": "الخطوة {current} من {total}"
+    }
   }
 }

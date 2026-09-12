@@ -100,5 +100,35 @@
   },
   "compare": {
     "sliderLabel": "Comparison slider between {before} and {after}"
+  },
+  "booking": {
+    "step1": { "legend": "What brings you in?" },
+    "step2": {
+      "legend": "When works for you?",
+      "morning": "Morning",
+      "afternoon": "Afternoon",
+      "evening": "Evening",
+      "unavailable": "Unavailable"
+    },
+    "step3": {
+      "nameLabel": "Full name",
+      "phoneLabel": "Phone number",
+      "emailLabel": "Email",
+      "notesLabel": "Anything we should know before your visit? (optional)",
+      "nameError": "Please enter your name.",
+      "phoneError": "Please enter a valid phone number.",
+      "emailError": "Please enter a valid email address."
+    },
+    "confirmation": {
+      "heading": "You're booked.",
+      "body": "We'll send you everything you need before your visit.",
+      "backHome": "Back to home"
+    },
+    "nav": {
+      "back": "Back",
+      "next": "Next",
+      "confirm": "Confirm booking",
+      "stepLabel": "Step {current} of {total}"
+    }
   }
 }
