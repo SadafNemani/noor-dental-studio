@@ -69,5 +69,33 @@
       },
       "reveal": { "title": "Reveal", "desc": "Your new smile, exactly as planned." }
     }
+  },
+  "firstVisit": {
+    "journey": {
+      "arrive": {
+        "title": "Arrive",
+        "desc": "Take your time. There's no rush the moment you walk in — settle in, breathe, and let us know you're here."
+      },
+      "meet": {
+        "title": "Meet",
+        "desc": "You'll meet your care team first, not a chair. A quick, friendly hello before anything clinical happens."
+      },
+      "talk": {
+        "title": "Talk",
+        "desc": "We ask about your concerns and history before we ask you to open your mouth. Nothing starts until you're ready."
+      },
+      "examine": {
+        "title": "Examine",
+        "desc": "A gentle, unhurried look — we explain what we're checking and why as we go, step by step."
+      },
+      "understand": {
+        "title": "Understand",
+        "desc": "We walk through what we found in plain language, with time for your questions."
+      },
+      "decide": {
+        "title": "Decide",
+        "desc": "Any next steps are entirely your call. No pressure, no same-day upsell."
+      }
+    }
   }
 }
