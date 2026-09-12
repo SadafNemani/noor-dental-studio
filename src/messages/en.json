@@ -48,54 +48,63 @@
     }
   },
   "invisalign": {
-    "journey": {
-      "heading": "Your journey",
-      "consultation": {
-        "title": "Consultation",
-        "desc": "We start with an honest conversation about what you want and whether Invisalign is the right fit."
+    "hero": {
+      "eyebrow": "Invisalign at Noor",
+      "heading": "See where your smile could go.",
+      "sub": "A clear, comfortable way to straighten your smile — on your schedule, not a rushed one."
+    },
+    "compare": { "heading": "See the difference", "before": "Before", "after": "After" },
+    "technology": {
+      "heading": "Technology that gets out of your way",
+      "body": "Our digital scanner replaces messy molds with a quick 3D scan, so you can see your projected result before committing to anything — and your treatment plan adjusts precisely as your smile moves."
+    },
+    "pricing": {
+      "heading": "Pricing guidance",
+      "body": "Invisalign treatment typically ranges from AED 12,000–20,000 depending on complexity and length of treatment. We'll give you an exact plan and cost at your consultation.",
+      "cta": "Book a consultation"
+    },
+    "testimonials": {
+      "heading": "What patients say",
+      "sara": {
+        "quote": "I compared four clinics and this was the only one that didn't rush me into a decision.",
+        "name": "Sara"
       },
-      "scan": {
-        "title": "Digital scan",
-        "desc": "A quick, comfortable 3D scan replaces old-fashioned molds entirely."
-      },
-      "plan": {
-        "title": "Personalised plan",
-        "desc": "You see your projected result before committing to anything."
-      },
-      "align": {
-        "title": "Align",
-        "desc": "Wear your aligners as your smile shifts gradually into place."
-      },
-      "reveal": { "title": "Reveal", "desc": "Your new smile, exactly as planned." }
-    }
+      "omar": {
+        "quote": "The scan alone made me understand exactly what to expect before I said yes.",
+        "name": "Omar"
+      }
+    },
+    "closing": { "heading": "Ready to explore your options?", "cta": "Book a consultation" }
   },
   "firstVisit": {
-    "journey": {
-      "arrive": {
-        "title": "Arrive",
-        "desc": "Take your time. There's no rush the moment you walk in — settle in, breathe, and let us know you're here."
+    "hero": {
+      "heading": "Wondering what will happen?",
+      "sub": "Here's exactly what your first visit looks like."
+    },
+    "control": {
+      "heading": "You're always in control.",
+      "body": "If something feels uncomfortable, say so — we pause. You can ask us to slow down, explain again, or stop entirely at any point. Sedation and comfort options are always available if you'd like them; we'll never assume."
+    },
+    "faq": {
+      "heading": "Common questions",
+      "yearsAway": {
+        "q": "What if I haven't visited a dentist in years?",
+        "a": "That's more common than you'd think, and there's no judgment here. We'll take it at your pace, starting with a conversation before anything else."
       },
-      "meet": {
-        "title": "Meet",
-        "desc": "You'll meet your care team first, not a chair. A quick, friendly hello before anything clinical happens."
+      "willItHurt": {
+        "q": "Will the appointment hurt?",
+        "a": "Most first visits involve no discomfort at all — it's mainly a conversation and a gentle look. If treatment is needed later, we'll always walk you through comfort options first."
       },
-      "talk": {
-        "title": "Talk",
-        "desc": "We ask about your concerns and history before we ask you to open your mouth. Nothing starts until you're ready."
+      "canIAskToStop": {
+        "q": "Can I ask to stop?",
+        "a": "Always. At any point, for any reason, no explanation needed."
       },
-      "examine": {
-        "title": "Examine",
-        "desc": "A gentle, unhurried look — we explain what we're checking and why as we go, step by step."
-      },
-      "understand": {
-        "title": "Understand",
-        "desc": "We walk through what we found in plain language, with time for your questions."
-      },
-      "decide": {
-        "title": "Decide",
-        "desc": "Any next steps are entirely your call. No pressure, no same-day upsell."
+      "canSomeoneComeWithMe": {
+        "q": "Can someone come with me?",
+        "a": "Of course — bring anyone who helps you feel more at ease."
       }
-    }
+    },
+    "closing": { "heading": "Whenever you're ready, we're here.", "cta": "Book a visit" }
   },
   "compare": {
     "sliderLabel": "Comparison slider between {before} and {after}"
@@ -129,5 +138,42 @@
       "confirm": "Confirm booking",
       "stepLabel": "Step {current} of {total}"
     }
+  },
+  "yourCare": {
+    "hero": {
+      "heading": "Let's find the right treatment for you.",
+      "sub": "Every smile is different. Here's where we usually start."
+    },
+    "treatments": {
+      "invisalign": { "name": "Invisalign", "desc": "Subtle smile alignment." },
+      "smileDesign": { "name": "Smile Design", "desc": "Cosmetic improvements tailored to you." },
+      "whitening": { "name": "Whitening", "desc": "A brighter smile, naturally." }
+    },
+    "cta": "Learn more"
+  },
+  "about": {
+    "hero": { "eyebrow": "Meet Dr. Noor" },
+    "story": {
+      "heading": "A different starting point",
+      "body": "I trained believing dentistry should feel like healthcare, not a sales pitch. That's the whole reason Noor exists — a clinic built around explaining things clearly, moving at your pace, and never pushing a treatment you didn't ask about."
+    },
+    "philosophy": {
+      "quote": "I never want a patient to feel rushed, judged, or unsure of what happens next.",
+      "attribution": "Dr. Noor — founder, Noor Dental Studio"
+    },
+    "credentials": {
+      "heading": "Credentials",
+      "item1": "DDS, University of Sharjah",
+      "item2": "Advanced certification in cosmetic dentistry, Invisalign-certified provider",
+      "item3": "12+ years in practice across the UAE"
+    },
+    "clinic": { "heading": "The clinic" },
+    "cta": "Book a visit"
+  },
+  "contact": {
+    "hero": { "heading": "Come talk to us.", "sub": "No pressure, no rushed decisions." },
+    "hoursLabel": "Hours",
+    "locationLabel": "Location",
+    "quickNote": "Prefer to ask something first? Message us on WhatsApp and we'll get back to you personally."
   }
 }
