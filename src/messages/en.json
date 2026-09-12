@@ -97,5 +97,8 @@
         "desc": "Any next steps are entirely your call. No pressure, no same-day upsell."
       }
     }
+  },
+  "compare": {
+    "sliderLabel": "Comparison slider between {before} and {after}"
   }
 }
