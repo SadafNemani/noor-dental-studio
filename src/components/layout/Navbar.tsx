@@ -8,6 +8,7 @@ import Container from "./Container";
 import Button from "../ui/Button";
 import LangToggle from "../ui/LangToggle";
 import { cn } from "@/lib/cn";
+import { clinicInfo } from "@/data/clinicInfo";
 
 export default function Navbar() {
   const { isRTL } = useDirection();
@@ -47,13 +48,13 @@ export default function Navbar() {
         <div className="flex items-center gap-3">
           <LangToggle />
           <a
-            href="https://wa.me/97140000000"
+            href={clinicInfo.whatsappHref}
             aria-label={t("whatsappLabel")}
             className="hidden sm:inline"
           >
             <i className="ti ti-brand-whatsapp text-lg" aria-hidden="true" />
           </a>
-          <a href="tel:+97140000000" aria-label={t("callLabel")} className="hidden sm:inline">
+          <a href={clinicInfo.phoneHref} aria-label={t("callLabel")} className="hidden sm:inline">
             <i className="ti ti-phone text-lg" aria-hidden="true" />
           </a>
           <Button

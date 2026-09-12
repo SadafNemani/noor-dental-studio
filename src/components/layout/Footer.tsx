@@ -1,6 +1,7 @@
 import { getTranslations } from "next-intl/server";
 import Container from "./Container";
 import Button from "../ui/Button";
+import { clinicInfo } from "@/data/clinicInfo";
 
 export default async function Footer() {
   const t = await getTranslations("footer");
@@ -21,15 +22,15 @@ export default async function Footer() {
           </span>
 
           <a
-            href="https://wa.me/97140000000"
+            href={clinicInfo.whatsappHref}
             className="hover:text-charcoal flex items-center gap-1.5"
           >
             <i className="ti ti-brand-whatsapp" aria-hidden="true" />
             {t("whatsapp")}
           </a>
-          <a href="tel:+97140000000" className="hover:text-charcoal flex items-center gap-1.5">
+          <a href={clinicInfo.phoneHref} className="hover:text-charcoal flex items-center gap-1.5">
             <i className="ti ti-phone" aria-hidden="true" />
-            {t("phone")}
+            {clinicInfo.phone}
           </a>
         </div>
         <Button href="/booking">{tNav("bookAVisit")}</Button>
