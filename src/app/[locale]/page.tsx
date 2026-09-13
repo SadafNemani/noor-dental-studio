@@ -59,6 +59,7 @@ export default async function HomePage() {
         </Scene>
 
         <Scene background="light">
+          <GradientBlob color="rgba(47,74,62,0.10)" className="-inset-e-40 top-1/4" />
           <PillarsRow />
         </Scene>
 

@@ -11,7 +11,7 @@ type SceneProps = {
 
 const bgClasses: Record<SceneProps["background"], string> = {
   dark: "bg-gradient-to-br from-pine-deep to-pine text-ivory",
-  light: "bg-white text-charcoal",
+  light: "bg-gradient-to-b from-ivory to-[#F3ECDF] text-charcoal",
   image: "bg-cover bg-center text-ivory",
 };
 
