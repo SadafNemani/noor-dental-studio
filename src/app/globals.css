@@ -52,10 +52,6 @@
   font-family: var(--font-body-ar), sans-serif;
 }
 
-html {
-  scroll-behavior: smooth;
-}
-
 body {
   background-color: var(--color-ivory);
   color: var(--color-charcoal);

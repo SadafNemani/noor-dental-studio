@@ -15,10 +15,15 @@ import { useReducedMotion } from "@/hooks/useReducedMotion";
 import { useIsMobile } from "@/hooks/useIsMobile";
 import { useNavEnvironment, type NavEnvironment } from "@/context/NavEnvironmentContext";
 import SceneProgressIndicator from "./SceneProgressIndicator";
+import { useHasMounted } from "@/hooks/useHasMounted";
 
 gsap.registerPlugin(ScrollTrigger);
 
-type SceneChildProps = { active?: boolean; background?: NavEnvironment };
+type SceneChildProps = {
+  active?: boolean;
+  background?: NavEnvironment;
+  layout?: "pinned" | "flow";
+};
 type PinnedSceneSystemProps = {
   children: ReactElement<SceneChildProps> | ReactElement<SceneChildProps>[];
 };
@@ -27,11 +32,12 @@ export default function PinnedSceneSystem({ children }: PinnedSceneSystemProps) 
   const viewportRef = useRef<HTMLDivElement>(null);
   const prefersReducedMotion = useReducedMotion();
   const isMobile = useIsMobile();
-  const skipPinning = prefersReducedMotion || isMobile;
   const [activeIndex, setActiveIndex] = useState(0);
   const { setEnvironment } = useNavEnvironment();
   const progressFillRef = useRef<HTMLDivElement>(null);
   const sceneCount = Children.count(children);
+  const hasMounted = useHasMounted();
+  const skipPinning = !hasMounted || prefersReducedMotion || isMobile;
 
   function getSceneBackground(index: number): NavEnvironment | undefined {
     const arr = Children.toArray(children) as ReactElement<SceneChildProps>[];
@@ -86,9 +92,11 @@ export default function PinnedSceneSystem({ children }: PinnedSceneSystemProps) 
 
   if (skipPinning) {
     return (
-      <div className="flex flex-col">
+      <div ref={viewportRef} className="flex flex-col">
         {Children.map(children, (child) =>
-          isValidElement<SceneChildProps>(child) ? cloneElement(child, { active: true }) : child
+          isValidElement<SceneChildProps>(child)
+            ? cloneElement(child, { active: true, layout: "flow" })
+            : child
         )}
       </div>
     );
@@ -98,7 +106,7 @@ export default function PinnedSceneSystem({ children }: PinnedSceneSystemProps) 
     <div ref={viewportRef} className="relative h-screen overflow-hidden">
       {Children.map(children, (child, i) =>
         isValidElement<SceneChildProps>(child)
-          ? cloneElement(child, { active: i === activeIndex })
+          ? cloneElement(child, { active: i === activeIndex, layout: "pinned" })
           : child
       )}
       <SceneProgressIndicator
