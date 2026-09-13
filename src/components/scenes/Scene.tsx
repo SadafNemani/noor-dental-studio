@@ -39,7 +39,12 @@ export default function Scene({
       )}
       style={background === "image" && image ? { backgroundImage: `url(${image})` } : undefined}
     >
-      {background === "image" && <div className="bg-pine-deep/40 absolute inset-0" />}
+      {background === "image" && (
+        <>
+          <div className="bg-pine-deep/40 absolute inset-0" />
+          <div className="absolute inset-0 bg-linear-to-b from-black/45 via-black/20 to-black/50 md:hidden" />
+        </>
+      )}
       {layout === "pinned" ? (
         <SceneActiveProvider value={active}>
           <div className="relative z-10 w-full">{children}</div>
