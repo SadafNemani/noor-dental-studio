@@ -1,15 +1,23 @@
 "use client";
-import { useRef, useState, Children, cloneElement, isValidElement, type ReactElement } from "react";
+import {
+  useRef,
+  useState,
+  useLayoutEffect,
+  Children,
+  cloneElement,
+  isValidElement,
+  type ReactElement,
+} from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
 import { useIsMobile } from "@/hooks/useIsMobile";
+import { useNavEnvironment, type NavEnvironment } from "@/context/NavEnvironmentContext";
 
 gsap.registerPlugin(ScrollTrigger);
 
-type SceneChildProps = { active?: boolean };
-
+type SceneChildProps = { active?: boolean; background?: NavEnvironment };
 type PinnedSceneSystemProps = {
   children: ReactElement<SceneChildProps> | ReactElement<SceneChildProps>[];
 };
@@ -20,12 +28,26 @@ export default function PinnedSceneSystem({ children }: PinnedSceneSystemProps) 
   const isMobile = useIsMobile();
   const skipPinning = prefersReducedMotion || isMobile;
   const [activeIndex, setActiveIndex] = useState(0);
-  const sceneCount = Children.count(children);
+  const { setEnvironment } = useNavEnvironment();
+
+  function getSceneBackground(index: number): NavEnvironment | undefined {
+    const arr = Children.toArray(children) as ReactElement<SceneChildProps>[];
+    return arr[index]?.props.background;
+  }
+
+  useLayoutEffect(() => {
+    if (skipPinning) {
+      setEnvironment("solid");
+      return;
+    }
+    const bg = getSceneBackground(activeIndex);
+    if (bg) setEnvironment(bg);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [activeIndex, skipPinning, setEnvironment]);
 
   useGSAP(
     () => {
       if (skipPinning || !viewportRef.current) return;
-
       const scenes = gsap.utils.toArray<HTMLElement>(".scene", viewportRef.current);
       const unitPx = window.innerHeight * 1.4;
 
@@ -36,9 +58,7 @@ export default function PinnedSceneSystem({ children }: PinnedSceneSystemProps) 
         } else {
           tl.fromTo(scene, { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.32 }, i);
         }
-        if (i < scenes.length - 1) {
-          tl.to(scene, { autoAlpha: 0, duration: 0.32 }, i + 0.68);
-        }
+        if (i < scenes.length - 1) tl.to(scene, { autoAlpha: 0, duration: 0.32 }, i + 0.68);
       });
 
       ScrollTrigger.create({
@@ -52,9 +72,10 @@ export default function PinnedSceneSystem({ children }: PinnedSceneSystemProps) 
           const idx = Math.min(scenes.length - 1, Math.floor(self.progress * scenes.length));
           setActiveIndex((prev) => (prev === idx ? prev : idx));
         },
+        onLeave: () => setEnvironment("solid"),
       });
     },
-    { scope: viewportRef, dependencies: [skipPinning, sceneCount] }
+    { scope: viewportRef, dependencies: [skipPinning] }
   );
 
   if (skipPinning) {

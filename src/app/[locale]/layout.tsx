@@ -7,6 +7,7 @@ import { fraunces, inter, markaziText, plexArabic } from "@/lib/fonts";
 
 import "../globals.css";
 import Navbar from "@/components/layout/Navbar";
+import { NavEnvironmentProvider } from "@/context/NavEnvironmentContext";
 
 export const metadata: Metadata = {
   title: "Noor Dental Studio",
@@ -41,8 +42,10 @@ export default async function LocaleLayout({ children, params }: Props) {
     <html lang={locale} dir={isRTL ? "rtl" : "ltr"} suppressHydrationWarning>
       <body className={fontVars}>
         <NextIntlClientProvider locale={locale} messages={messages}>
-          <Navbar />
-          {children}
+          <NavEnvironmentProvider>
+            <Navbar />
+            {children}
+          </NavEnvironmentProvider>
         </NextIntlClientProvider>
       </body>
     </html>

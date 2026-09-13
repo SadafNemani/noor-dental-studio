@@ -1,19 +1,49 @@
 "use client";
 
+import { motion } from "motion/react";
 import { useTranslations } from "next-intl";
+import { IconBrandWhatsapp, IconPhone } from "@tabler/icons-react";
 import { Link } from "@/i18n/navigation";
 import { useDirection } from "@/hooks/useDirection";
-import { useScrolled } from "@/hooks/useScrolled";
-import Container from "./Container";
-import Button from "../ui/Button";
-import LangToggle from "../ui/LangToggle";
-import { cn } from "@/lib/cn";
+import { useNavEnvironment } from "@/context/NavEnvironmentContext";
+import Button from "@/components/ui/Button";
+import LangToggle from "@/components/ui/LangToggle";
 import { clinicInfo } from "@/data/clinicInfo";
-import { IconBrandWhatsapp, IconPhone } from "@tabler/icons-react";
+
+const envStyles = {
+  image: {
+    backgroundColor: "rgba(0,0,0,0)",
+    color: "#FAF6F1",
+    borderRadius: 24,
+    marginTop: 14,
+    boxShadow: "0 0px 0px rgba(0,0,0,0)",
+  },
+  dark: {
+    backgroundColor: "rgba(24,38,32,0.45)",
+    color: "#FAF6F1",
+    borderRadius: 24,
+    marginTop: 14,
+    boxShadow: "0 0px 0px rgba(0,0,0,0)",
+  },
+  light: {
+    backgroundColor: "rgba(255,253,251,0.85)",
+    color: "#26241F",
+    borderRadius: 24,
+    marginTop: 14,
+    boxShadow: "0 20px 40px rgba(35,36,25,0.10)",
+  },
+  solid: {
+    backgroundColor: "rgba(255,253,251,0.92)",
+    color: "#26241F",
+    borderRadius: 24,
+    marginTop: 14,
+    boxShadow: "0 20px 40px rgba(35,36,25,0.10)",
+  },
+} as const;
 
 export default function Navbar() {
   const { isRTL } = useDirection();
-  const scrolled = useScrolled();
+  const { environment } = useNavEnvironment();
   const t = useTranslations("nav");
 
   const navItems = [
@@ -24,48 +54,44 @@ export default function Navbar() {
   ];
 
   return (
-    <header
-      dir={isRTL ? "rtl" : "ltr"}
-      className={cn(
-        "fixed inset-x-0 top-0 z-100 transition-colors duration-300",
-        scrolled
-          ? "text-charcoal shadow-soft bg-white/90 backdrop-blur"
-          : "text-ivory bg-transparent"
-      )}
-    >
-      <Container className="flex items-center justify-between py-4">
-        <Link href="/" className="font-heading text-lg">
+    <header dir={isRTL ? "rtl" : "ltr"} className="fixed inset-x-0 top-0 z-100 mx-[3vw]">
+      <motion.div
+        animate={envStyles[environment]}
+        transition={{ duration: 0.5, ease: "easeInOut" }}
+        className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 backdrop-blur-md md:px-8"
+      >
+        <Link href="/" className="font-heading text-2xl">
           Noor
         </Link>
 
-        <nav className="text-label hidden gap-6 md:flex">
+        <nav className="hidden gap-8 text-sm font-medium tracking-wide md:flex">
           {navItems.map((item) => (
-            <Link key={item.href} href={item.href} className="hover:opacity-70">
+            <Link key={item.href} href={item.href} className="transition-opacity hover:opacity-70">
               {item.label}
             </Link>
           ))}
         </nav>
 
-        <div className="flex items-center gap-3">
-          <LangToggle />
+        <div className="flex items-center gap-4">
           <a
             href={clinicInfo.whatsappHref}
             aria-label={t("whatsappLabel")}
-            className="hidden sm:inline"
+            className="hidden opacity-60 transition-opacity hover:opacity-100 sm:inline"
           >
-            <IconBrandWhatsapp className="text-lg" aria-hidden="true" />
+            <IconBrandWhatsapp size={17} aria-hidden="true" />
           </a>
-          <a href={clinicInfo.phoneHref} aria-label={t("callLabel")} className="hidden sm:inline">
-            <IconPhone className="text-lg" aria-hidden="true" />
-          </a>
-          <Button
-            href="/booking"
-            className={!scrolled ? "bg-gold text-charcoal hover:bg-gold/90" : undefined}
+          <a
+            href={clinicInfo.phoneHref}
+            aria-label={t("callLabel")}
+            className="hidden opacity-60 transition-opacity hover:opacity-100 sm:inline"
           >
-            {t("bookAVisit")}
-          </Button>
+            <IconPhone size={17} aria-hidden="true" />
+          </a>
+          <LangToggle />
+
+          <Button href="/booking">{t("bookAVisit")}</Button>
         </div>
-      </Container>
+      </motion.div>
     </header>
   );
 }
