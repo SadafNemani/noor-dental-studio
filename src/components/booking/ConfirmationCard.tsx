@@ -6,6 +6,7 @@ import Heading from "../typography/Heading";
 import Text from "../typography/Text";
 import Button from "../ui/Button";
 import { nextAvailableDate } from "@/data/timeSlots";
+import { IconCheck } from "@tabler/icons-react";
 
 type ConfirmationCardProps = {
   slotLabel: string;
@@ -28,7 +29,7 @@ export default function ConfirmationCard({ slotLabel }: ConfirmationCardProps) {
       className="mx-auto flex max-w-110 flex-col items-center gap-4 text-center"
     >
       <div className="bg-sage/20 flex h-14 w-14 items-center justify-center rounded-full">
-        <i className="ti ti-check text-sage text-2xl" aria-hidden="true" />
+        <IconCheck className="text-sage text-2xl" aria-hidden="true" />
       </div>
       <Heading size="h2">{t("heading")}</Heading>
       <Text className="text-pine" as="span">

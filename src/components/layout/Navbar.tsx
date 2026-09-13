@@ -9,6 +9,7 @@ import Button from "../ui/Button";
 import LangToggle from "../ui/LangToggle";
 import { cn } from "@/lib/cn";
 import { clinicInfo } from "@/data/clinicInfo";
+import { IconBrandWhatsapp, IconPhone } from "@tabler/icons-react";
 
 export default function Navbar() {
   const { isRTL } = useDirection();
@@ -52,10 +53,10 @@ export default function Navbar() {
             aria-label={t("whatsappLabel")}
             className="hidden sm:inline"
           >
-            <i className="ti ti-brand-whatsapp text-lg" aria-hidden="true" />
+            <IconBrandWhatsapp className="text-lg" aria-hidden="true" />
           </a>
           <a href={clinicInfo.phoneHref} aria-label={t("callLabel")} className="hidden sm:inline">
-            <i className="ti ti-phone text-lg" aria-hidden="true" />
+            <IconPhone className="text-lg" aria-hidden="true" />
           </a>
           <Button
             href="/booking"

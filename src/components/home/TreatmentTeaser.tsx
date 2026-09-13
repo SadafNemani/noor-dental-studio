@@ -6,6 +6,7 @@ import Heading from "../typography/Heading";
 import Text from "../typography/Text";
 import Button from "../ui/Button";
 import Arrive from "../motion/Arrive";
+import { IconPhoto } from "@tabler/icons-react";
 
 export default function TreatmentTeaser() {
   const t = useTranslations("home.treatment");
@@ -36,7 +37,7 @@ export default function TreatmentTeaser() {
 
       <Arrive delay={0.1}>
         <div className="rounded-card bg-ivory/10 flex aspect-4/3 items-center justify-center">
-          <i className="ti ti-photo text-ivory text-2xl" aria-hidden="true" />
+          <IconPhoto className="text-ivory text-2xl" aria-hidden="true" />
         </div>
       </Arrive>
     </div>

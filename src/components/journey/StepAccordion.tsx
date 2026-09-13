@@ -8,6 +8,7 @@ import Heading from "../typography/Heading";
 import Text from "../typography/Text";
 import Arrive from "../motion/Arrive";
 import { cn } from "@/lib/cn";
+import { IconChevronDown } from "@tabler/icons-react";
 
 export default function StepAccordion() {
   const t = useTranslations("firstVisit.journey");
@@ -38,9 +39,9 @@ export default function StepAccordion() {
                     {t(`${key}.title`)}
                   </Heading>
                 </span>
-                <i
+                <IconChevronDown
                   className={cn(
-                    "ti ti-chevron-down text-stone shrink-0 transition-transform duration-300",
+                    "text-stone shrink-0 transition-transform duration-300",
                     isOpen && "rotate-180"
                   )}
                   aria-hidden="true"

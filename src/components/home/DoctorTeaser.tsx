@@ -6,6 +6,7 @@ import Quote from "../typography/Quote";
 import Button from "../ui/Button";
 import Arrive from "../motion/Arrive";
 import Text from "../typography/Text";
+import { IconPhoto } from "@tabler/icons-react";
 
 export default function DoctorTeaser() {
   const t = useTranslations("home.doctor");
@@ -14,7 +15,7 @@ export default function DoctorTeaser() {
     <div className="grid grid-cols-1 items-center gap-9 md:grid-cols-[0.8fr_1.2fr]">
       <Arrive>
         <div className="rounded-card bg-sand flex aspect-square flex-col items-center justify-center gap-2">
-          <i className="ti ti-photo text-stone text-2xl" aria-hidden="true" />
+          <IconPhoto className="text-stone text-2xl" aria-hidden="true" />
 
           <Text as="span" muted className="text-xs">
             doctor portrait

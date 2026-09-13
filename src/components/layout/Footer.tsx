@@ -2,6 +2,7 @@ import { getTranslations } from "next-intl/server";
 import Container from "./Container";
 import Button from "../ui/Button";
 import { clinicInfo } from "@/data/clinicInfo";
+import { IconBrandWhatsapp, IconClock, IconMapPin, IconPhone } from "@tabler/icons-react";
 
 export default async function Footer() {
   const t = await getTranslations("footer");
@@ -12,12 +13,12 @@ export default async function Footer() {
       <Container className="flex flex-wrap items-center justify-between gap-4">
         <div className="text-label text-stone flex flex-wrap gap-5">
           <span className="flex items-center gap-1.5">
-            <i className="ti ti-clock" aria-hidden="true" />
+            <IconClock size={20} aria-hidden="true" />
             {t("hours")}
           </span>
 
           <span className="flex items-center gap-1.5">
-            <i className="ti ti-map-pin" aria-hidden="true" />
+            <IconMapPin size={20} aria-hidden="true" />
             {t("location")}
           </span>
 
@@ -25,11 +26,11 @@ export default async function Footer() {
             href={clinicInfo.whatsappHref}
             className="hover:text-charcoal flex items-center gap-1.5"
           >
-            <i className="ti ti-brand-whatsapp" aria-hidden="true" />
+            <IconBrandWhatsapp size={20} aria-hidden="true" />
             {t("whatsapp")}
           </a>
           <a href={clinicInfo.phoneHref} className="hover:text-charcoal flex items-center gap-1.5">
-            <i className="ti ti-phone" aria-hidden="true" />
+            <IconPhone size={20} aria-hidden="true" />
             {clinicInfo.phone}
           </a>
         </div>

@@ -24,7 +24,7 @@ export default function HelpCardGrid() {
           <Arrive key={card.key} delay={i * 0.08}>
             <Card className="flex flex-col items-center gap-3 text-center">
               <IconBadge>
-                <i className={`ti ${card.icon}`} aria-hidden="true" />
+                <card.icon size={20} aria-hidden="true" />
               </IconBadge>
 
               <Text as="span" className="text-charcoal">
