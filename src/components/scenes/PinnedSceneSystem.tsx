@@ -14,6 +14,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
 import { useIsMobile } from "@/hooks/useIsMobile";
 import { useNavEnvironment, type NavEnvironment } from "@/context/NavEnvironmentContext";
+import SceneProgressIndicator from "./SceneProgressIndicator";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -29,6 +30,8 @@ export default function PinnedSceneSystem({ children }: PinnedSceneSystemProps) 
   const skipPinning = prefersReducedMotion || isMobile;
   const [activeIndex, setActiveIndex] = useState(0);
   const { setEnvironment } = useNavEnvironment();
+  const progressFillRef = useRef<HTMLDivElement>(null);
+  const sceneCount = Children.count(children);
 
   function getSceneBackground(index: number): NavEnvironment | undefined {
     const arr = Children.toArray(children) as ReactElement<SceneChildProps>[];
@@ -69,6 +72,9 @@ export default function PinnedSceneSystem({ children }: PinnedSceneSystemProps) 
         scrub: 1,
         animation: tl,
         onUpdate: (self) => {
+          if (progressFillRef.current) {
+            progressFillRef.current.style.height = `${self.progress * 100}%`;
+          }
           const idx = Math.min(scenes.length - 1, Math.floor(self.progress * scenes.length));
           setActiveIndex((prev) => (prev === idx ? prev : idx));
         },
@@ -95,6 +101,11 @@ export default function PinnedSceneSystem({ children }: PinnedSceneSystemProps) 
           ? cloneElement(child, { active: i === activeIndex })
           : child
       )}
+      <SceneProgressIndicator
+        total={sceneCount}
+        activeIndex={activeIndex}
+        fillRef={progressFillRef}
+      />
     </div>
   );
 }
