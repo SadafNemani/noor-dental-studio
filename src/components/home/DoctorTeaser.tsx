@@ -35,7 +35,11 @@ export default function DoctorTeaser() {
         </Arrive>
 
         <Arrive delay={0.16}>
-          <Button href="/about" variant="ghost" className="border-pine text-pine mt-6">
+          <Button
+            href="/about"
+            variant="ghost"
+            className="border-gold text-gold hover:bg-gold/10 mt-6"
+          >
             {t("cta")}
           </Button>
         </Arrive>
