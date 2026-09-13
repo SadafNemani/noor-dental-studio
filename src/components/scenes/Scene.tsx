@@ -18,7 +18,9 @@ const bgClasses: Record<SceneProps["background"], string> = {
 export default function Scene({ background, image, active = true, children }: SceneProps) {
   return (
     <section
-      className={`scene absolute inset-0 flex items-center overflow-hidden px-[8vw] opacity-0 ${bgClasses[background]}`}
+      className={`scene absolute inset-0 flex items-center overflow-hidden px-[8vw] ${
+        active ? "opacity-100" : "opacity-0"
+      } ${bgClasses[background]}`}
       style={background === "image" && image ? { backgroundImage: `url(${image})` } : undefined}
     >
       {background === "image" && <div className="bg-pine-deep/40 absolute inset-0" />}

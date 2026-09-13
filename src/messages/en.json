@@ -18,6 +18,13 @@
     "switchToEnglish": "Switch to English"
   },
   "home": {
+    "hero": {
+      "eyebrow": "Noor Dental Studio",
+      "heading": "A calmer way to care for your smile.",
+      "sub": "Thoughtful dentistry, clear treatment plans, and a team that never rushes you.",
+      "bookCta": "Book a visit",
+      "meetCta": "Meet the doctor"
+    },
     "help": {
       "heading": "How can we help you today?",
       "improveSmile": "Improve my smile",
@@ -45,6 +52,11 @@
       "heading": "A smile you can see coming.",
       "body": "Straighten your smile with a plan built around your life, not the other way around.",
       "cta": "Explore Invisalign"
+    },
+    "closing": {
+      "heading": "Whenever you're ready, we're here.",
+      "body": "No pressure, no rushed decisions — just come talk to us.",
+      "cta": "Book a visit"
     }
   },
   "invisalign": {

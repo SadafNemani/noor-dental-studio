@@ -31,11 +31,14 @@ export default function PinnedSceneSystem({ children }: PinnedSceneSystemProps) 
 
       const tl = gsap.timeline();
       scenes.forEach((scene, i) => {
-        tl.fromTo(scene, { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.32 }, i).to(
-          scene,
-          { autoAlpha: 0, duration: 0.32 },
-          i + 0.68
-        );
+        if (i === 0) {
+          gsap.set(scene, { autoAlpha: 1 });
+        } else {
+          tl.fromTo(scene, { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.32 }, i);
+        }
+        if (i < scenes.length - 1) {
+          tl.to(scene, { autoAlpha: 0, duration: 0.32 }, i + 0.68);
+        }
       });
 
       ScrollTrigger.create({
