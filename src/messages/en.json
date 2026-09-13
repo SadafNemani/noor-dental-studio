@@ -20,7 +20,7 @@
   "home": {
     "hero": {
       "eyebrow": "Noor Dental Studio",
-      "heading": "A calmer way to care for your smile.",
+      "heading": "A <accent>calmer</accent> way<br></br>to care for<br></br>your smile.",
       "sub": "Thoughtful dentistry, clear treatment plans, and a team that never rushes you.",
       "bookCta": "Book a visit",
       "meetCta": "Meet the doctor"

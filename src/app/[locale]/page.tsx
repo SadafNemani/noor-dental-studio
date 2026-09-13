@@ -4,7 +4,6 @@ import GradientBlob from "@/components/motion/GradientBlob";
 import Arrive from "@/components/motion/Arrive";
 import Heading from "@/components/typography/Heading";
 import Text from "@/components/typography/Text";
-import Eyebrow from "@/components/typography/Eyebrow";
 import Button from "@/components/ui/Button";
 import HelpCardGrid from "@/components/home/HelpCardGrid";
 import PillarsRow from "@/components/home/PillarsRow";
@@ -13,6 +12,7 @@ import TreatmentTeaser from "@/components/home/TreatmentTeaser";
 import Footer from "@/components/layout/Footer";
 import Container from "@/components/layout/Container";
 import { getTranslations } from "next-intl/server";
+import { richText } from "@/lib/richText";
 
 export default async function HomePage() {
   const t = await getTranslations("home.hero");
@@ -22,28 +22,30 @@ export default async function HomePage() {
     <>
       <PinnedSceneSystem>
         <Scene background="image" image="/images/home-hero.webp">
-          <div className="max-w-140">
+          <div className="relative flex h-[72vh] flex-col gap-10">
             <Arrive>
-              <Eyebrow className="text-gold mb-4">{t("eyebrow")}</Eyebrow>
+              <span className="font-body text-ivory/80 text-[11px] font-medium tracking-[0.18em] uppercase">
+                {t("eyebrow")}
+              </span>
             </Arrive>
 
-            <Arrive delay={0.06}>
-              <Heading size="h1" className="mb-5">
-                {t("heading")}
-              </Heading>
-            </Arrive>
+            <div className="max-w-180">
+              <Arrive delay={0.06}>
+                <h1 className="font-heading text-ivory text-[clamp(2.75rem,7vw,6rem)] leading-[1.04] font-semibold">
+                  {t.rich("heading", richText)}
+                </h1>
+              </Arrive>
+            </div>
 
-            <Arrive delay={0.12}>
+            <Arrive delay={0.16}>
               <Text className="text-mist mb-8 max-w-95">{t("sub")}</Text>
             </Arrive>
 
-            <Arrive delay={0.18}>
-              <div className="flex flex-wrap gap-3.5">
-                <Button href="/booking" className="bg-gold text-charcoal hover:bg-gold/90">
-                  {t("bookCta")}
-                </Button>
+            <Arrive delay={0.22}>
+              <div className="flex flex-wrap gap-4">
+                <Button href="/booking">{t("bookCta")}</Button>
 
-                <Button href="/about" variant="secondary">
+                <Button href="/about" variant="secondary" className="text-ivory">
                   {t("meetCta")}
                 </Button>
               </div>
