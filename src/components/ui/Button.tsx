@@ -14,8 +14,8 @@ type ButtonProps = {
 };
 
 const variantClasses: Record<ButtonVariant, string> = {
-  primary: "bg-pine text-ivory hover:bg-pine-deep",
-  ghost: "border border-current text-current hover:bg-ivory/10",
+  primary: "bg-pine text-ivory shadow-soft hover:bg-pine-deep hover:-translate-y-0.5",
+  ghost: "border border-current text-current hover:bg-ivory/10 hover:-translate-y-0.5",
 };
 
 export default function Button({
@@ -27,7 +27,7 @@ export default function Button({
   className,
 }: ButtonProps) {
   const classes = cn(
-    "inline-flex items-center gap-2 rounded-button px-6 py-3 text-label transition-color duration-300",
+    "inline-flex items-center gap-2 rounded-button px-7 py-3.5 text-sm font-medium tracking-wide transition-all duration-300",
     variantClasses[variant],
     className
   );
