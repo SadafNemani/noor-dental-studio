@@ -19,7 +19,7 @@
   --font-body: var(--font-body-en), sans-serif;
 
   /* Type Scale */
-  --text-h1: clamp(2.25rem, 4.5vw, 3.75rem);
+  --text-h1: clamp(2.5rem, 5.5vw, 4.5rem);
   --text-h1--line-height: 1.12;
   --text-h2: clamp(1.75rem, 3vw, 2.5rem);
   --text-h2--line-height: 1.15;
@@ -39,15 +39,17 @@
   --shadow-soft: 0 20px 40px rgba(35, 36, 25, 0.06);
 }
 
-:root,
-[dir="ltr"] {
-  --font-heading: var(--font-heading-en);
-  --font-body: var(--font-body-en);
+.font-heading {
+  font-family: var(--font-heading-en), serif;
 }
-
-[dir="rtl"] {
-  --font-heading: var(--font-heading-ar);
-  --font-body: var(--font-body-ar);
+.font-body {
+  font-family: var(--font-body-en), sans-serif;
+}
+[dir="rtl"] .font-heading {
+  font-family: var(--font-heading-ar), serif;
+}
+[dir="rtl"] .font-body {
+  font-family: var(--font-body-ar), sans-serif;
 }
 
 html {
