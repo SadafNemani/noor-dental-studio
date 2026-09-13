@@ -36,7 +36,7 @@ export default function ConfirmationCard({ slotLabel }: ConfirmationCardProps) {
         {formattedDate}, {slotLabel}
       </Text>
       <Text muted>{t("body")}</Text>
-      <Button href="/" variant="ghost" className="border-pine text-pine mt-2">
+      <Button href="/" variant="secondary" className="border-pine text-pine mt-2">
         {t("backHome")}
       </Button>
     </motion.div>

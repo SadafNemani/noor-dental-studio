@@ -29,7 +29,11 @@ export default function TreatmentTeaser() {
         </Arrive>
 
         <Arrive delay={0.24}>
-          <Button href="/your-care/invisalign" className="bg-gold text-charcoal hover:bg-gold/90">
+          <Button
+            href="/your-care/invisalign"
+            variant="tertiary"
+            className="border-gold text-gold hover:bg-gold/10"
+          >
             {t("cta")}
           </Button>
         </Arrive>

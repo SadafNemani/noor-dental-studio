@@ -43,7 +43,7 @@ export default async function HomePage() {
                   {t("bookCta")}
                 </Button>
 
-                <Button href="/about" variant="ghost">
+                <Button href="/about" variant="secondary">
                   {t("meetCta")}
                 </Button>
               </div>

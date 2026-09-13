@@ -138,7 +138,7 @@ export default function BookingStepper() {
 
       <div className="mt-8 flex justify-between">
         {step > 1 ? (
-          <Button variant="ghost" onClick={goBack} className="border-stone text-stone">
+          <Button variant="secondary" onClick={goBack} className="border-stone text-stone">
             {t("nav.back")}
           </Button>
         ) : (

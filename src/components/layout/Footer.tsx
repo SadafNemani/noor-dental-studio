@@ -34,7 +34,9 @@ export default async function Footer() {
             {clinicInfo.phone}
           </a>
         </div>
-        <Button href="/booking">{tNav("bookAVisit")}</Button>
+        <Button href="/booking" variant="primary">
+          {tNav("bookAVisit")}
+        </Button>
       </Container>
     </footer>
   );
