@@ -31,9 +31,9 @@ export default async function HomePage() {
 
             <div className="max-w-180">
               <Arrive delay={0.06}>
-                <h1 className="font-heading text-ivory text-[clamp(2.75rem,7vw,6rem)] leading-[1.04] font-semibold">
+                <Heading as="h1" size="h1" className="text-ivory leading-[1.04]">
                   {t.rich("heading", richText)}
-                </h1>
+                </Heading>
               </Arrive>
             </div>
 

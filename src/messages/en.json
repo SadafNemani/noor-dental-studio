@@ -26,11 +26,15 @@
       "meetCta": "Meet the doctor"
     },
     "help": {
-      "heading": "How can we help you today?",
+      "heading": "How can<br></br>we help <accent>you</accent> today?",
       "improveSmile": "Improve my smile",
+      "improveSmileDesc": "Invisalign, whitening, and cosmetic options — tailored, not templated.",
       "careForTeeth": "Take care of my teeth",
+      "careForTeethDesc": "Regular checkups and cleanings, unhurried.",
       "nervous": "I'm nervous about visiting",
-      "needHelpToday": "I need help today"
+      "nervousDesc": "We'll explain everything first, and stop whenever you need to.",
+      "needHelpToday": "I need help today",
+      "needHelpTodayDesc": "Same-day slots, when we have them."
     },
     "pillars": {
       "heading": "A different kind of visit.",
