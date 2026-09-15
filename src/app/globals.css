@@ -71,3 +71,54 @@ body {
       "ghost compact tall";
   }
 }
+
+.approach-word {
+  position: relative;
+  --emphasis: 0;
+  display: inline-block;
+  font-weight: 600;
+  color: color-mix(
+    in srgb,
+    var(--color-pine) calc(var(--emphasis) * 100%),
+    var(--color-charcoal) calc((1 - var(--emphasis)) * 100%)
+  );
+  transform: scale(calc(1 + var(--emphasis) * 0.025));
+}
+
+.approach-word::after {
+  content: "";
+  position: absolute;
+  inset-inline-start: 20%;
+  bottom: -0.16em;
+  height: 2px;
+  width: 60%;
+  background-color: var(--color-gold);
+  transform-origin: left;
+  transform: scaleX(var(--emphasis));
+}
+[dir="rtl"] .approach-word::after {
+  transform-origin: right;
+}
+
+.approach-line-1 .approach-word {
+  --emphasis: min(
+    clamp(0, calc((var(--scene-progress, 1) - 0.38) / 0.07), 1),
+    clamp(0, calc((0.52 - var(--scene-progress, 1)) / 0.07), 1)
+  );
+}
+.approach-line-2 .approach-word {
+  --emphasis: min(
+    clamp(0, calc((var(--scene-progress, 1) - 0.49) / 0.07), 1),
+    clamp(0, calc((0.63 - var(--scene-progress, 1)) / 0.07), 1)
+  );
+}
+.approach-line-3 .approach-word {
+  --emphasis: min(
+    clamp(0, calc((var(--scene-progress, 1) - 0.6) / 0.07), 1),
+    clamp(0, calc((0.74 - var(--scene-progress, 1)) / 0.07), 1)
+  );
+}
+
+[data-layout="flow"] .approach-word {
+  --emphasis: 1;
+}

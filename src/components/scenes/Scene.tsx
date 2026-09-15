@@ -7,6 +7,7 @@ type SceneProps = {
   image?: string;
   active?: boolean;
   layout?: "pinned" | "flow";
+  backgroundEffect?: React.ReactNode;
   children: React.ReactNode;
 };
 
@@ -21,6 +22,7 @@ export default function Scene({
   image,
   active = true,
   layout = "pinned",
+  backgroundEffect,
   children,
 }: SceneProps) {
   const layoutClasses =
@@ -37,7 +39,11 @@ export default function Scene({
         layoutClasses,
         bgClasses[background]
       )}
-      style={background === "image" && image ? { backgroundImage: `url(${image})` } : undefined}
+      data-layout={layout}
+      style={{
+        ...(background === "image" && image ? { backgroundImage: `url(${image})` } : {}),
+        ...(layout === "flow" ? { ["--scene-progress" as string]: 1 } : {}),
+      }}
     >
       {background === "image" && (
         <>
@@ -45,6 +51,7 @@ export default function Scene({
           <div className="absolute inset-0 bg-linear-to-b from-black/45 via-black/20 to-black/50 md:hidden" />
         </>
       )}
+      {backgroundEffect}
       {layout === "pinned" ? (
         <SceneActiveProvider value={active}>
           <div className="relative z-10 w-full">{children}</div>

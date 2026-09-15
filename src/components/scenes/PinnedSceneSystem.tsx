@@ -75,13 +75,17 @@ export default function PinnedSceneSystem({ children }: PinnedSceneSystemProps) 
         start: "top top",
         end: `+=${scenes.length * unitPx}`,
         pin: true,
-        scrub: 1,
+        scrub: true,
         animation: tl,
         onUpdate: (self) => {
           if (progressFillRef.current) {
             progressFillRef.current.style.height = `${self.progress * 100}%`;
           }
-          const idx = Math.min(scenes.length - 1, Math.floor(self.progress * scenes.length));
+          const rawIndex = self.progress * scenes.length;
+          const idx = Math.min(scenes.length - 1, Math.floor(rawIndex));
+          const localProgress = Math.min(1, Math.max(0, rawIndex - idx));
+          scenes[idx]?.style.setProperty("--scene-progress", String(localProgress));
+
           setActiveIndex((prev) => (prev === idx ? prev : idx));
         },
         onLeave: () => setEnvironment("solid"),

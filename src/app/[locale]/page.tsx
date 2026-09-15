@@ -13,6 +13,7 @@ import Footer from "@/components/layout/Footer";
 import Container from "@/components/layout/Container";
 import { getTranslations } from "next-intl/server";
 import { richText } from "@/lib/richText";
+import AtmosphereWash from "@/components/motion/AtmoshphereWash";
 
 export default async function HomePage() {
   const t = await getTranslations("home.hero");
@@ -60,8 +61,7 @@ export default async function HomePage() {
           </div>
         </Scene>
 
-        <Scene background="light">
-          <GradientBlob color="rgba(47,74,62,0.10)" className="-inset-e-40 top-1/4" />
+        <Scene background="light" backgroundEffect={<AtmosphereWash />}>
           <PillarsRow />
         </Scene>
 
