@@ -4,7 +4,7 @@ import { motion } from "motion/react";
 import { useRevealState } from "@/hooks/useRevealState";
 
 const variants = {
-  hidden: { opacity: 0, y: 14 },
+  hidden: { opacity: 0, y: 8 },
   visible: { opacity: 1, y: 0 },
 };
 
@@ -27,7 +27,7 @@ export default function Arrive({
       animate={reveal.animate}
       whileInView={reveal.whileInView}
       viewport={reveal.viewport}
-      transition={{ duration: 0.9, delay, ease: "easeOut" }}
+      transition={{ duration: 0.5, delay, ease: "easeOut" }}
     >
       {children}
     </motion.div>
