@@ -37,13 +37,10 @@
       "needHelpTodayDesc": "Same-day slots, when we have them."
     },
     "pillars": {
-      "heading": "A different kind of visit.",
-      "clearTitle": "Clear",
-      "clearDesc": "Know what's happening and why.",
-      "calmTitle": "Calm",
-      "calmDesc": "No rushed appointments.",
-      "personalTitle": "Personal",
-      "personalDesc": "Care built around you."
+      "heading": "The Noor Approach",
+      "line1": "Every visit begins <em>clear</em>.",
+      "line2": "Every moment stays <em>calm</em>.",
+      "line3": "Every plan feels <em>personal</em>."
     },
     "doctor": {
       "eyebrow": "Meet Dr. Noor",

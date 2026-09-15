@@ -38,13 +38,10 @@
       "needHelpTodayDesc": "مواعيد في نفس اليوم، عند توفرها."
     },
     "pillars": {
-      "heading": "زيارة من نوع مختلف.",
-      "clearTitle": "واضح",
-      "clearDesc": "اعرف ما يحدث ولماذا.",
-      "calmTitle": "هادئ",
-      "calmDesc": "لا مواعيد متسرعة.",
-      "personalTitle": "شخصي",
-      "personalDesc": "عناية مبنية من أجلك."
+      "heading": "نهج نور",
+      "line1": "كل زيارة تبدأ <em>واضحة</em>.",
+      "line2": "كل لحظة تبقى <em>هادئة</em>.",
+      "line3": "كل خطة تُبنى <em>شخصية</em>."
     },
     "doctor": {
       "eyebrow": "تعرف على د. نور",
