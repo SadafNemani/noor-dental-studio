@@ -2,11 +2,10 @@
 
 import { useTranslations } from "next-intl";
 import Eyebrow from "../typography/Eyebrow";
-import Quote from "../typography/Quote";
 import Button from "../ui/Button";
 import Arrive from "../motion/Arrive";
-import Text from "../typography/Text";
-import { IconPhoto } from "@tabler/icons-react";
+import Quote from "../typography/Quote";
+import Image from "next/image";
 
 export default function DoctorTeaser() {
   const t = useTranslations("home.doctor");
@@ -14,13 +13,14 @@ export default function DoctorTeaser() {
   return (
     <div className="grid grid-cols-1 items-center gap-9 md:grid-cols-[0.8fr_1.2fr]">
       <Arrive>
-        <div className="rounded-card bg-sand flex aspect-square flex-col items-center justify-center gap-2">
-          <IconPhoto className="text-stone text-2xl" aria-hidden="true" />
-
-          <Text as="span" muted className="text-xs">
-            doctor portrait
-          </Text>
-        </div>
+        <Image
+          className="rounded-card bg-ivory/10 h-100 w-100 object-cover"
+          src="/images/doctor-portrait.webp"
+          alt={t("eyebrow")}
+          width={832}
+          height={1248}
+          style={{ aspectRatio: "832/1248" }}
+        />
       </Arrive>
 
       <div>
