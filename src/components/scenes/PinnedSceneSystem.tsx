@@ -59,15 +59,39 @@ export default function PinnedSceneSystem({ children }: PinnedSceneSystemProps) 
       if (skipPinning || !viewportRef.current) return;
       const scenes = gsap.utils.toArray<HTMLElement>(".scene", viewportRef.current);
       const unitPx = window.innerHeight * 1.4;
+      const fadeDuration = 0.16;
 
       const tl = gsap.timeline();
       scenes.forEach((scene, i) => {
         if (i === 0) {
-          gsap.set(scene, { autoAlpha: 1 });
+          gsap.set(scene, { autoAlpha: 1, scale: 1, filter: "blur(0px)" });
         } else {
-          tl.fromTo(scene, { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.22 }, i);
+          tl.fromTo(
+            scene,
+            { autoAlpha: 0, scale: 1.06, filter: "blur(14px)" },
+            {
+              autoAlpha: 1,
+              scale: 1,
+              filter: "blur(0px)",
+              duration: fadeDuration,
+              ease: "power2.out",
+            },
+            i
+          );
         }
-        if (i < scenes.length - 1) tl.to(scene, { autoAlpha: 0, duration: 0.22 }, i + 0.78);
+        if (i < scenes.length - 1) {
+          tl.to(
+            scene,
+            {
+              autoAlpha: 0,
+              scale: 0.94,
+              filter: "blur(14px)",
+              duration: fadeDuration,
+              ease: "power2.in",
+            },
+            i + 1 - fadeDuration
+          );
+        }
       });
 
       ScrollTrigger.create({
