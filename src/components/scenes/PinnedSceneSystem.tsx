@@ -16,6 +16,7 @@ import { useIsMobile } from "@/hooks/useIsMobile";
 import { useNavEnvironment, type NavEnvironment } from "@/context/NavEnvironmentContext";
 import SceneProgressIndicator from "./SceneProgressIndicator";
 import { useHasMounted } from "@/hooks/useHasMounted";
+import { SCENE_FADE_DURATION } from "@/lib/scene-timing";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -59,7 +60,7 @@ export default function PinnedSceneSystem({ children }: PinnedSceneSystemProps) 
       if (skipPinning || !viewportRef.current) return;
       const scenes = gsap.utils.toArray<HTMLElement>(".scene", viewportRef.current);
       const unitPx = window.innerHeight * 1;
-      const fadeDuration = 0.16;
+      const fadeDuration = SCENE_FADE_DURATION;
 
       const tl = gsap.timeline();
       scenes.forEach((scene, i) => {
@@ -94,6 +95,7 @@ export default function PinnedSceneSystem({ children }: PinnedSceneSystemProps) 
         }
       });
 
+      // Pads the timeline's total duration to exactly `scenes.length` units. Without this, the last scene never gets a fade-out event, so the timeline's real duration is shorter than assumed — desyncing onUpdate's `rawIndex = self.progress * scenes.length` math from what's actually visible on screen.
       tl.set({}, {}, scenes.length);
 
       ScrollTrigger.create({
