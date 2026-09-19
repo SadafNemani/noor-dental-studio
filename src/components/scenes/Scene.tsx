@@ -8,6 +8,7 @@ type SceneProps = {
   active?: boolean;
   layout?: "pinned" | "flow";
   backgroundEffect?: React.ReactNode;
+  className?: string;
   children: React.ReactNode;
 };
 
@@ -23,6 +24,7 @@ export default function Scene({
   active = true,
   layout = "pinned",
   backgroundEffect,
+  className,
   children,
 }: SceneProps) {
   const layoutClasses =
@@ -37,7 +39,8 @@ export default function Scene({
       className={cn(
         "scene flex w-full items-center overflow-hidden px-[8vw]",
         layoutClasses,
-        bgClasses[background]
+        bgClasses[background],
+        className
       )}
       data-layout={layout}
       style={{
