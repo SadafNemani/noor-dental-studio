@@ -24,7 +24,7 @@ export default async function HomePage() {
     <>
       <PinnedSceneSystem>
         <Scene background="image" image="/images/home-hero.webp" mirrorInRtl>
-          <div className="relative flex flex-col gap-5 md:gap-10">
+          <div className="relative flex flex-col gap-10 pt-24 md:h-[72vh] md:justify-between md:gap-5 md:pt-10">
             <Arrive>
               <span className="font-body text-ivory/80 text-[11px] font-medium tracking-[0.18em] uppercase">
                 {t("eyebrow")}
