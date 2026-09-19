@@ -13,7 +13,7 @@ export default function LangToggle() {
   return (
     <button
       onClick={() => router.replace(pathname, { locale: nextLocale })}
-      className="text-label rounded-full border border-current px-3 py-1"
+      className="text-label cursor-pointer rounded-full border border-current px-3 py-1 transition-all duration-300 hover:scale-105 hover:bg-current/10"
       aria-label={`Switch to ${nextLocale === "ar" ? t("switchToArabic") : t("switchToEnglish")}`}
     >
       {nextLocale === "ar" ? "عربي" : "EN"}
