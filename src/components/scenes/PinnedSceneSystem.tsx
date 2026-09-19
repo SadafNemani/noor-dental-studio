@@ -1,3 +1,45 @@
+/**
+ * SCENE-PROGRESS CONVENTION
+ * ─────────────────────────
+ * Any component that wants a scroll-scrubbed effect tied to a specific
+ * pinned scene follows this pattern:
+ *
+ * 1. This component writes `--scene-progress` (0→1) directly onto the
+ *    active <section class="scene"> element every scroll tick, via
+ *    onUpdate below. It is NOT React state — reading it in CSS avoids
+ *    a re-render on every scroll frame.
+ *
+ * 2. `--scene-progress` is only meaningful between SCENE_STABLE_START
+ *    (0.16) and SCENE_STABLE_END (0.84) — see src/lib/scene-timing.ts.
+ *    Outside that range the scene is still fading in/out, not fully
+ *    visible. Any content-reveal effect should map its own window
+ *    INSIDE that stable range, not the naive full 0→1 — see the
+ *    Approach section (globals.css) for the reference implementation.
+ *
+ * 3. If your effect needs its own derived variable (e.g. --veil-progress
+ *    in the Invisalign scene), give <Scene> a `className` prop to tag
+ *    the outer <section>, and scope your derived variable to that class
+ *    in CSS. Do NOT try to set it on an inner content wrapper — Scene's
+ *    `backgroundEffect` prop renders as a SIBLING of `children`, not a
+ *    descendant, so a variable set on the content side never reaches
+ *    the background side.
+ *
+ * 4. On mobile / prefers-reduced-motion, scenes never pin — they render
+ *    in "flow" layout instead (data-layout="flow" on the <section>).
+ *    --scene-progress is never written in flow mode, so every effect
+ *    MUST include a `[data-layout="flow"] { --your-var: <resolved-end-state> }`
+ *    fallback, or it silently renders at whatever CSS default you gave
+ *    the variable (often the wrong state — see invisalign-scene's fallback
+ *    block for the pattern to copy).
+ *
+ * 5. Do not hardcode fade-timing numbers (0.16, 0.84, etc.) — reference
+ *    SCENE_FADE_DURATION / --scene-stable-start / --scene-stable-end.
+ *    A prior version of this file had these numbers copy-pasted across
+ *    three separate CSS blocks; when the timeline's real duration bug
+ *    (see the tl.set() line below) was fixed, all three had to be found
+ *    and re-derived independently. Don't repeat that.
+ */
+
 "use client";
 import {
   useRef,
@@ -95,7 +137,10 @@ export default function PinnedSceneSystem({ children }: PinnedSceneSystemProps) 
         }
       });
 
-      // Pads the timeline's total duration to exactly `scenes.length` units. Without this, the last scene never gets a fade-out event, so the timeline's real duration is shorter than assumed — desyncing onUpdate's `rawIndex = self.progress * scenes.length` math from what's actually visible on screen.
+      // Pads the timeline's total duration to exactly `scenes.length` units.
+      // Without this, the last scene never gets a fade-out event, so the
+      // imeline's real duration is shorter than assumed — desyncing onUpdate's
+      // `rawIndex = self.progress * scenes.length` math from what's actually visible on screen.
       tl.set({}, {}, scenes.length);
 
       ScrollTrigger.create({
