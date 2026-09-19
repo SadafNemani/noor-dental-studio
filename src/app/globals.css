@@ -39,6 +39,11 @@
   --shadow-soft: 0 20px 40px rgba(35, 36, 25, 0.06);
 }
 
+:root {
+  --scene-stable-start: 0.16;
+  --scene-stable-end: 0.84;
+}
+
 .font-heading {
   font-family: var(--font-heading-en), serif;
 }
@@ -102,7 +107,7 @@ body {
 }
 .approach-line-1 .approach-word {
   --emphasis: min(
-    clamp(0, calc((var(--scene-progress, 1) - 0.16) / 0.05), 1),
+    clamp(0, calc((var(--scene-progress, 1) - var(--scene-stable-start)) / 0.05), 1),
     clamp(0, calc((0.35 - var(--scene-progress, 1)) / 0.05), 1)
   );
 }
@@ -115,7 +120,7 @@ body {
 .approach-line-3 .approach-word {
   --emphasis: min(
     clamp(0, calc((var(--scene-progress, 1) - 0.65) / 0.05), 1),
-    clamp(0, calc((0.84 - var(--scene-progress, 1)) / 0.05), 1)
+    clamp(0, calc((var(--scene-stable-end, 1) - var(--scene-progress, 1)) / 0.05), 1)
   );
 }
 [data-layout="flow"] .approach-word {
@@ -135,7 +140,7 @@ body {
   transform: translateY(calc((1 - var(--veil-progress, 1)) * 14px));
 }
 .invisalign-cta {
-  transform: scale(calc(0.97, + var(--veil-progress, 1) * 0.03));
+  transform: scale(calc(0.97 + var(--veil-progress, 1) * 0.03));
 }
 
 .invisalign-scene {
