@@ -93,6 +93,13 @@ specific reason.
   (client) / `getTranslations` (server). Watch for the "assembled
   sentence" trap: concatenating already-translated fragments into an
   untranslated template still needs its own message key.
+- **Image mirroring under RTL is opt-in per image, never a blanket rule.**
+  `Scene` accepts a `mirrorInRtl` boolean prop (default `false`); components
+  that render their own photo layer outside `Scene`'s built-in `image`
+  background (e.g. `VeilRevealBackground`) accept an equivalent `mirror`
+  prop with the same default. Both apply `rtl:scale-x-[-1]` directly to
+  the specific photo element only — nothing flips unless explicitly
+  opted in.
 
 ## Client-only browser state
 

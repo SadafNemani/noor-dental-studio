@@ -9,6 +9,7 @@ type SceneProps = {
   layout?: "pinned" | "flow";
   backgroundEffect?: React.ReactNode;
   className?: string;
+  mirrorInRtl?: boolean;
   children: React.ReactNode;
 };
 
@@ -25,6 +26,7 @@ export default function Scene({
   layout = "pinned",
   backgroundEffect,
   className,
+  mirrorInRtl = false,
   children,
 }: SceneProps) {
   const layoutClasses =
@@ -50,6 +52,10 @@ export default function Scene({
     >
       {background === "image" && (
         <>
+          <div
+            className={cn("absolute inset-0 bg-cover bg-center", mirrorInRtl && "rtl:scale-x-[-1]")}
+            style={image ? { backgroundImage: `url(${image})` } : undefined}
+          />
           <div className="bg-pine-deep/40 absolute inset-0" />
           <div className="absolute inset-0 bg-linear-to-b from-black/45 via-black/20 to-black/50 md:hidden" />
         </>

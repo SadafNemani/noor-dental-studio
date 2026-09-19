@@ -23,7 +23,7 @@ export default async function HomePage() {
   return (
     <>
       <PinnedSceneSystem>
-        <Scene background="image" image="/images/home-hero.webp">
+        <Scene background="image" image="/images/home-hero.webp" mirrorInRtl>
           <div className="relative flex flex-col gap-5 md:gap-10">
             <Arrive>
               <span className="font-body text-ivory/80 text-[11px] font-medium tracking-[0.18em] uppercase">
@@ -73,7 +73,7 @@ export default async function HomePage() {
         </Scene>
         <Scene
           background="dark"
-          backgroundEffect={<VeilRevealBackground image="/images/invisalign-reveal.webp" />}
+          backgroundEffect={<VeilRevealBackground image="/images/invisalign-reveal.webp" mirror />}
           className="invisalign-scene"
         >
           <Container>
