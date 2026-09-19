@@ -58,7 +58,7 @@ export default function PinnedSceneSystem({ children }: PinnedSceneSystemProps) 
     () => {
       if (skipPinning || !viewportRef.current) return;
       const scenes = gsap.utils.toArray<HTMLElement>(".scene", viewportRef.current);
-      const unitPx = window.innerHeight * 1.4;
+      const unitPx = window.innerHeight * 1;
       const fadeDuration = 0.16;
 
       const tl = gsap.timeline();
@@ -93,6 +93,8 @@ export default function PinnedSceneSystem({ children }: PinnedSceneSystemProps) 
           );
         }
       });
+
+      tl.set({}, {}, scenes.length);
 
       ScrollTrigger.create({
         trigger: viewportRef.current,
