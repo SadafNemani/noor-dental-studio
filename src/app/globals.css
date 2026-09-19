@@ -57,6 +57,7 @@ body {
   color: var(--color-charcoal);
 }
 
+/* Homepage's Help Grid Section */
 .help-grid {
   display: grid;
   gap: 1.25rem;
@@ -72,6 +73,7 @@ body {
   }
 }
 
+/* Homepage's Pillars Row Section */
 .approach-word {
   position: relative;
   --emphasis: 0;
@@ -84,7 +86,6 @@ body {
   );
   transform: scale(calc(1 + var(--emphasis) * 0.025));
 }
-
 .approach-word::after {
   content: "";
   position: absolute;
@@ -99,28 +100,50 @@ body {
 [dir="rtl"] .approach-word::after {
   transform-origin: right;
 }
-
 .approach-line-1 .approach-word {
   --emphasis: min(
-    clamp(0, calc((var(--scene-progress, 1) - 0.52) / 0.07), 1),
-    clamp(0, calc((0.66 - var(--scene-progress, 1)) / 0.07), 1)
+    clamp(0, calc((var(--scene-progress, 1) - 0.16) / 0.05), 1),
+    clamp(0, calc((0.35 - var(--scene-progress, 1)) / 0.05), 1)
   );
 }
-
 .approach-line-2 .approach-word {
   --emphasis: min(
-    clamp(0, calc((var(--scene-progress, 1) - 0.63) / 0.07), 1),
-    clamp(0, calc((0.77 - var(--scene-progress, 1)) / 0.07), 1)
+    clamp(0, calc((var(--scene-progress, 1) - 0.4) / 0.05), 1),
+    clamp(0, calc((0.6 - var(--scene-progress, 1)) / 0.05), 1)
   );
 }
-
 .approach-line-3 .approach-word {
   --emphasis: min(
-    clamp(0, calc((var(--scene-progress, 1) - 0.74) / 0.07), 1),
-    clamp(0, calc((0.88 - var(--scene-progress, 1)) / 0.07), 1)
+    clamp(0, calc((var(--scene-progress, 1) - 0.65) / 0.05), 1),
+    clamp(0, calc((0.84 - var(--scene-progress, 1)) / 0.05), 1)
   );
 }
-
 [data-layout="flow"] .approach-word {
   --emphasis: 1;
+}
+
+/* Homepage's Invisalign Section */
+.invisalign-photo {
+  filter: blur(calc((1 - var(--veil-progress, 1)) * 6px))
+    brightness(calc(0.75 + var(--veil-progress, 1) * 0.35));
+  transform: scale(calc(1.04 - var(--veil-progress, 1) * 0.04));
+}
+.invisalign-veil {
+  opacity: calc(1 - var(--veil-progress, 1));
+}
+.invisalign-heading {
+  transform: translateY(calc((1 - var(--veil-progress, 1)) * 14px));
+}
+.invisalign-cta {
+  transform: scale(calc(0.97, + var(--veil-progress, 1) * 0.03));
+}
+
+.invisalign-scene {
+  --veil-progress: clamp(0, calc((var(--scene-progress, 1) - 0.18) / 0.57), 1);
+}
+[data-layout="flow"] .invisalign-photo,
+[data-layout="flow"] .invisalign-veil,
+[data-layout="flow"] .invisalign-heading,
+[data-layout="flow"] .invisalign-cta {
+  --veil-progress: 1;
 }

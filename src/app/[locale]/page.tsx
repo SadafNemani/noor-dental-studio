@@ -14,6 +14,7 @@ import Container from "@/components/layout/Container";
 import { getTranslations } from "next-intl/server";
 import { richText } from "@/lib/richText";
 import AtmosphereWash from "@/components/motion/AtmoshphereWash";
+import VeilRevealBackground from "@/components/home/VeilRevealBackground";
 
 export default async function HomePage() {
   const t = await getTranslations("home.hero");
@@ -70,8 +71,11 @@ export default async function HomePage() {
             <DoctorTeaser />
           </Container>
         </Scene>
-
-        <Scene background="dark">
+        <Scene
+          background="dark"
+          backgroundEffect={<VeilRevealBackground image="/images/invisalign-reveal.webp" />}
+          className="invisalign-scene"
+        >
           <Container>
             <TreatmentTeaser />
           </Container>

@@ -6,44 +6,30 @@ import Heading from "../typography/Heading";
 import Text from "../typography/Text";
 import Button from "../ui/Button";
 import Arrive from "../motion/Arrive";
-import { IconPhoto } from "@tabler/icons-react";
 
 export default function TreatmentTeaser() {
   const t = useTranslations("home.treatment");
 
   return (
-    <div className="rounded-card bg-pine text-ivory grid grid-cols-1 items-center gap-7 p-9 md:grid-cols-[1.2fr_0.8fr]">
-      <div>
+    <div className="relative mx-auto flex min-h-[70vh] max-w-250 items-end justify-start ps-0">
+      <div className="invisalign-panel rounded-card bg-pine-deep/80 -ms-4 max-w-110 p-8 backdrop-blur-md md:-ms-25">
         <Arrive>
-          <Eyebrow className="mb-2">{t("eyebrow")}</Eyebrow>
+          <Eyebrow className="invisalign-heading mb-4">{t("eyebrow")}</Eyebrow>
         </Arrive>
-
-        <Arrive delay={0.8}>
-          <Heading size="h2" className="mb-3">
+        <Arrive delay={0.1}>
+          <Heading size="h2" className="invisalign-heading text-ivory mb-4">
             {t("heading")}
           </Heading>
         </Arrive>
-
-        <Arrive delay={0.16}>
-          <Text className="text-mist mb-5 max-w-[320px]">{t("body")}</Text>
+        <Arrive delay={0.2}>
+          <Text className="invisalign-heading text-ivory/90 mb-8">{t("body")}</Text>
         </Arrive>
-
-        <Arrive delay={0.24}>
-          <Button
-            href="/your-care/invisalign"
-            variant="tertiary"
-            className="border-gold text-gold hover:bg-gold/10"
-          >
+        <Arrive delay={0.3}>
+          <Button href="/your-care/invisalign" className="invisalign-cta">
             {t("cta")}
           </Button>
         </Arrive>
       </div>
-
-      <Arrive delay={0.1}>
-        <div className="rounded-card bg-ivory/10 flex aspect-4/3 items-center justify-center">
-          <IconPhoto className="text-ivory text-2xl" aria-hidden="true" />
-        </div>
-      </Arrive>
     </div>
   );
 }
