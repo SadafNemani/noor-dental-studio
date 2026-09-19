@@ -31,7 +31,7 @@ export default async function Footer() {
           </a>
           <a href={clinicInfo.phoneHref} className="hover:text-charcoal flex items-center gap-1.5">
             <IconPhone size={20} aria-hidden="true" />
-            {clinicInfo.phone}
+            <bdi dir="ltr">{clinicInfo.phone}</bdi>
           </a>
         </div>
         <Button href="/booking" variant="primary">
