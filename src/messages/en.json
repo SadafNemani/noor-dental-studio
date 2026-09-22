@@ -154,15 +154,27 @@
   },
   "yourCare": {
     "hero": {
+      "eyebrow": "Your Care",
       "heading": "Let's find the right treatment for you.",
-      "sub": "Every smile is different. Here's where we usually start."
+      "body": "Every smile has different goals. Explore the treatments we offer and find the approach that feels right.",
+      "exploreCue": "Explore treatments"
     },
     "treatments": {
-      "invisalign": { "name": "Invisalign", "desc": "Subtle smile alignment." },
-      "smileDesign": { "name": "Smile Design", "desc": "Cosmetic improvements tailored to you." },
-      "whitening": { "name": "Whitening", "desc": "A brighter smile, naturally." }
+      "invisalign": {
+        "name": "Invisalign",
+        "desc": "Clear aligner treatment for a more discreet transformation."
+      },
+      "smileDesign": {
+        "name": "Smile Design",
+        "desc": "Thoughtful cosmetic planning for a smile that feels like you."
+      },
+      "whitening": { "name": "Whitening", "desc": "A brighter smile, naturally refined." }
     },
-    "cta": "Learn more"
+    "closing": {
+      "heading": "Not sure where to start?",
+      "body": "Let's talk about what you'd like to change.",
+      "cta": "Book a consultation"
+    }
   },
   "about": {
     "hero": { "eyebrow": "Meet Dr. Noor" },
