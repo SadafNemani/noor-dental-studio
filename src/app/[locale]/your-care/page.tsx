@@ -1,0 +1,65 @@
+import { getTranslations } from "next-intl/server";
+import Container from "@/components/layout/Container";
+import Eyebrow from "@/components/typography/Eyebrow";
+import Heading from "@/components/typography/Heading";
+import Text from "@/components/typography/Text";
+import Arrive from "@/components/motion/Arrive";
+import Button from "@/components/ui/Button";
+import TreatmentSelector from "@/components/care/TreatmentSelector";
+import ScrollCue from "@/components/care/ScrollCue";
+import Footer from "@/components/layout/Footer";
+
+export default async function YourCarePage() {
+  const t = await getTranslations("yourCare");
+
+  return (
+    <>
+      <section className="pt-36 pb-16 md:pt-44">
+        <Container>
+          <div className="max-w-185">
+            <Arrive>
+              <Eyebrow className="mb-5">{t("hero.eyebrow")}</Eyebrow>
+            </Arrive>
+
+            <Arrive delay={0.8}>
+              <Heading size="h1" className="mb-6" as="h1">
+                {t("hero.heading")}
+              </Heading>
+            </Arrive>
+
+            <Arrive delay={0.16}>
+              <Text muted className="max-w-110">
+                {t("hero.body")}
+              </Text>
+            </Arrive>
+          </div>
+
+          <Arrive delay={0.24}>
+            <ScrollCue targetId="treatments" label={t("hero.exploreCue")} />
+          </Arrive>
+        </Container>
+      </section>
+
+      <section id="treatments" className="py-10 md:py-16">
+        <Container>
+          <TreatmentSelector />
+        </Container>
+      </section>
+
+      <section className="bg-pine text-ivory py-24 text-center">
+        <Container>
+          <Arrive>
+            <div className="bg-gold mx-auto mb-6 h-0.5 w-10" />
+            <Heading size="h2" className="text-ivory mx-auto mb-4 max-w-130">
+              {t("closing.heading")}
+            </Heading>
+            <Text className="text-mist mx-auto mb-8 max-w-100">{t("closing.body")}</Text>
+            <Button href="/booking">{t("closing.cta")}</Button>
+          </Arrive>
+        </Container>
+      </section>
+
+      <Footer />
+    </>
+  );
+}
