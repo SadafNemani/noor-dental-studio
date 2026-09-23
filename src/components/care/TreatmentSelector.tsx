@@ -1,0 +1,118 @@
+"use client";
+
+import { useState } from "react";
+import { useTranslations } from "next-intl";
+import { AnimatePresence, motion } from "motion/react";
+import TreatmentRow from "./TreatmentRow";
+import Text from "../typography/Text";
+import { treatments } from "@/data/treatments";
+import { cn } from "@/lib/cn";
+
+const aspectClasses = {
+  tall: "aspect-3/4",
+  wide: "aspect-16/10",
+  crop: "aspect-square",
+} as const;
+
+export default function TreatmentSelector() {
+  const t = useTranslations("yourCare.treatments");
+  const [hovered, setHovered] = useState(0);
+
+  return (
+    <div>
+      <div className="hidden md:grid md:grid-cols-[1.3fr_1fr] md:items-start md:gap-16">
+        <div>
+          {treatments.map((treatment, i) => (
+            <TreatmentRow
+              key={treatment.slug}
+              href={treatment.href}
+              onMouseEnter={() => setHovered(i)}
+              onFocus={() => setHovered(i)}
+            >
+              <div className="group flex items-baseline gap-6">
+                <span className="font-body text-label text-stone">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <div className="flex-1">
+                  <div className="flex items-center justify-between gap-4">
+                    <h3
+                      className={cn(
+                        "font-heading text-h3",
+                        treatment.href ? "text-charcoal" : "text-charcoal/70"
+                      )}
+                    >
+                      {t(`${treatment.slug}.name`)}
+                    </h3>
+                    {treatment.href && (
+                      <span
+                        aria-hidden="true"
+                        className="font-body text-pine text-lg transition-transform duration-300 group-hover:translate-x-1 rtl:-scale-x-100 rtl:group-hover:-translate-x-1"
+                      >
+                        ↗
+                      </span>
+                    )}
+                  </div>
+
+                  <Text muted className={cn("mt-1 max-w-95", !treatment.href && "text-stone/70")}>
+                    {t(`${treatment.slug}.desc`)}
+                  </Text>
+                </div>
+              </div>
+            </TreatmentRow>
+          ))}
+        </div>
+
+        <div className="rounded-card bg-sand sticky top-32 overflow-hidden">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={treatments[hovered].slug}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.45, ease: "easeOut" }}
+              className={cn("bg-cover bg-center", aspectClasses[treatments[hovered].aspect])}
+              style={{ backgroundImage: `url(${treatments[hovered].image})` }}
+            />
+          </AnimatePresence>
+        </div>
+      </div>
+
+      <div className="md:hidden">
+        {treatments.map((treatment, i) => (
+          <TreatmentRow key={treatment.slug} href={treatment.href}>
+            <div className="mb-4 flex items-baseline justify-between gap-4">
+              <div className="flex items-baseline gap-4">
+                <span className="font-body text-label text-stone">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <h3
+                  className={cn(
+                    "font-heading text-h3",
+                    treatment.href ? "text-charcoal" : "text-charcoal/70"
+                  )}
+                >
+                  {t(`${treatment.slug}.name`)}
+                </h3>
+              </div>
+              {treatment.href && (
+                <span aria-hidden="true" className="font-body text-pine text-lg rtl:-scale-x-100">
+                  ↗
+                </span>
+              )}
+            </div>
+            <div
+              className={cn(
+                "rounded-card bg-sand mb-3 bg-cover bg-center",
+                aspectClasses[treatment.aspect]
+              )}
+              style={{ backgroundImage: `url(${treatment.image})` }}
+            />
+            <Text muted className={cn(!treatment.href && "text-stone/70")}>
+              {t(`${treatment.slug}.desc`)}
+            </Text>
+          </TreatmentRow>
+        ))}
+      </div>
+    </div>
+  );
+}
