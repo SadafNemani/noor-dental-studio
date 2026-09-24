@@ -8,12 +8,14 @@ import Button from "@/components/ui/Button";
 import TreatmentSelector from "@/components/care/TreatmentSelector";
 import ScrollCue from "@/components/care/ScrollCue";
 import Footer from "@/components/layout/Footer";
+import SolidNavTrigger from "@/components/layout/SolidNavTrigger";
 
 export default async function YourCarePage() {
   const t = await getTranslations("yourCare");
 
   return (
     <>
+      <SolidNavTrigger />
       <section className="pt-36 pb-16 md:pt-44">
         <Container>
           <div className="max-w-185">
