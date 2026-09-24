@@ -60,8 +60,15 @@ export default async function YourCarePage() {
         </Container>
       </section>
 
-      <section className="bg-pine text-ivory py-24 text-center">
-        <Container>
+      <section className="bg-pine text-ivory relative overflow-hidden py-28 text-center">
+        <span
+          aria-hidden="true"
+          className="font-heading text-ivory/6 pointer-events-none absolute inset-0 flex items-center justify-center text-[28vw] leading-none font-semibold"
+        >
+          Noor
+        </span>
+
+        <Container className="relative">
           <Arrive>
             <div className="bg-gold mx-auto mb-6 h-0.5 w-10" />
             <Heading size="h2" className="text-ivory mx-auto mb-4 max-w-130">
