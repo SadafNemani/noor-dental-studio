@@ -155,24 +155,28 @@
   "yourCare": {
     "hero": {
       "eyebrow": "Your Care",
-      "heading": "Let's find the right treatment for you.",
-      "body": "Every smile has different goals. Explore the treatments we offer and find the approach that feels right.",
+      "headingLine1": "Let's find the right",
+      "headingLine2": "treatment for you.",
+      "body": "Every smile starts somewhere different. Explore our treatments and find the approach that feels right for you.",
       "exploreCue": "Explore treatments"
     },
     "treatments": {
       "invisalign": {
         "name": "Invisalign",
-        "desc": "Clear aligner treatment for a more discreet transformation."
+        "desc": "Clear aligners planned around your bite, goals, and everyday life."
       },
       "smileDesign": {
         "name": "Smile Design",
-        "desc": "Thoughtful cosmetic planning for a smile that feels like you."
+        "desc": "A considered approach to shape, proportion, and the details that make your smile yours."
       },
-      "whitening": { "name": "Whitening", "desc": "A brighter smile, naturally refined." }
+      "whitening": {
+        "name": "Whitening",
+        "desc": "Professional whitening for a brighter smile that still looks natural."
+      }
     },
     "closing": {
-      "heading": "Not sure where to start?",
-      "body": "Let's talk about what you'd like to change.",
+      "heading": "Not sure where to begin?",
+      "body": "You don't need to know the answer before you visit.",
       "cta": "Book a consultation"
     }
   },
