@@ -155,8 +155,7 @@
   "yourCare": {
     "hero": {
       "eyebrow": "Your Care",
-      "headingLine1": "Let's find the right",
-      "headingLine2": "treatment for you.",
+      "heading": "Let's find the right<br></br> treatment for you.",
       "body": "Every smile starts somewhere different. Explore our treatments and find the approach that feels right for you.",
       "exploreCue": "Explore treatments"
     },
