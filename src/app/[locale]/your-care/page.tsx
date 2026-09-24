@@ -43,7 +43,7 @@ export default async function YourCarePage() {
             </div>
 
             <Arrive delay={0.12} className="hidden md:block">
-              <div className="rounded-card bg-sand ms-auto mt-10 aspect-3/4 w-full max-w-70 overflow-hidden">
+              <div className="rounded-card bg-sand ms-auto mt-10 aspect-square w-full max-w-150 overflow-hidden">
                 <div
                   className="h-full w-full bg-cover bg-center"
                   style={{ backgroundImage: "url(/images/care-hero-portrait.webp)" }}

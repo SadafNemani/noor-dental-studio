@@ -6,13 +6,6 @@ import { AnimatePresence, motion } from "motion/react";
 import TreatmentRow from "./TreatmentRow";
 import Text from "../typography/Text";
 import { treatments } from "@/data/treatments";
-import { cn } from "@/lib/cn";
-
-const aspectClasses = {
-  tall: "aspect-3/4",
-  wide: "aspect-16/10",
-  crop: "aspect-square",
-} as const;
 
 export default function TreatmentSelector() {
   const t = useTranslations("yourCare.treatments");
@@ -77,7 +70,7 @@ export default function TreatmentSelector() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.45, ease: "easeOut" }}
-              className={cn("bg-cover bg-center", aspectClasses[treatments[activeImage].aspect])}
+              className="aspect-square bg-cover bg-center"
               style={{ backgroundImage: `url(${treatments[activeImage].image})` }}
             />
           </AnimatePresence>
@@ -108,10 +101,7 @@ export default function TreatmentSelector() {
               </div>
             </div>
             <div
-              className={cn(
-                "rounded-card bg-sand mb-3 bg-cover bg-center",
-                aspectClasses[treatment.aspect]
-              )}
+              className="rounded-card bg-sand mb-3 aspect-square bg-cover bg-center"
               style={{ backgroundImage: `url(${treatment.image})` }}
             />
             <Text muted>{t(`${treatment.slug}.desc`)}</Text>
