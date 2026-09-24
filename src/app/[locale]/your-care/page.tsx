@@ -54,7 +54,7 @@ export default async function YourCarePage() {
         </Container>
       </section>
 
-      <section id="treatments" className="py-10 md:py-16">
+      <section id="treatments" className="from-ivory bg-linear-to-b to-[#F6F1E8] py-10 md:py-16">
         <Container>
           <TreatmentSelector />
         </Container>
