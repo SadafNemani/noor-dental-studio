@@ -16,7 +16,16 @@ const aspectClasses = {
 
 export default function TreatmentSelector() {
   const t = useTranslations("yourCare.treatments");
-  const [hovered, setHovered] = useState(0);
+  const [activeImage, setActiveImage] = useState(0);
+  const [focused, setFocused] = useState<number | null>(null);
+
+  function handleEnter(i: number) {
+    setActiveImage(i);
+    setFocused(i);
+  }
+  function handleLeave() {
+    setFocused(null);
+  }
 
   return (
     <div>
@@ -26,21 +35,19 @@ export default function TreatmentSelector() {
             <TreatmentRow
               key={treatment.slug}
               href={treatment.href}
-              onMouseEnter={() => setHovered(i)}
-              onFocus={() => setHovered(i)}
+              isActive={focused === null ? undefined : focused === i}
+              onMouseEnter={() => handleEnter(i)}
+              onMouseLeave={handleLeave}
+              onFocus={() => handleEnter(i)}
+              onBlur={handleLeave}
             >
               <div className="group flex items-baseline gap-6">
-                <span className="font-body text-label text-stone">
+                <span className="font-heading text-h3 text-stone/50 tabular-nums">
                   {String(i + 1).padStart(2, "0")}
                 </span>
-                <div className="flex-1">
+                <div className="flex-1 pt-1">
                   <div className="flex items-center justify-between gap-4">
-                    <h3
-                      className={cn(
-                        "font-heading text-h3",
-                        treatment.href ? "text-charcoal" : "text-charcoal/70"
-                      )}
-                    >
+                    <h3 className="font-heading text-h3 text-charcoal">
                       {t(`${treatment.slug}.name`)}
                     </h3>
                     {treatment.href && (
@@ -53,7 +60,7 @@ export default function TreatmentSelector() {
                     )}
                   </div>
 
-                  <Text muted className={cn("mt-1 max-w-95", !treatment.href && "text-stone/70")}>
+                  <Text muted className="mt-1 max-w-95">
                     {t(`${treatment.slug}.desc`)}
                   </Text>
                 </div>
@@ -65,13 +72,13 @@ export default function TreatmentSelector() {
         <div className="rounded-card bg-sand sticky top-32 overflow-hidden">
           <AnimatePresence mode="wait">
             <motion.div
-              key={treatments[hovered].slug}
+              key={treatments[activeImage].slug}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.45, ease: "easeOut" }}
-              className={cn("bg-cover bg-center", aspectClasses[treatments[hovered].aspect])}
-              style={{ backgroundImage: `url(${treatments[hovered].image})` }}
+              className={cn("bg-cover bg-center", aspectClasses[treatments[activeImage].aspect])}
+              style={{ backgroundImage: `url(${treatments[activeImage].image})` }}
             />
           </AnimatePresence>
         </div>
@@ -80,25 +87,25 @@ export default function TreatmentSelector() {
       <div className="md:hidden">
         {treatments.map((treatment, i) => (
           <TreatmentRow key={treatment.slug} href={treatment.href}>
-            <div className="mb-4 flex items-baseline justify-between gap-4">
-              <div className="flex items-baseline gap-4">
-                <span className="font-body text-label text-stone">
-                  {String(i + 1).padStart(2, "0")}
-                </span>
-                <h3
-                  className={cn(
-                    "font-heading text-h3",
-                    treatment.href ? "text-charcoal" : "text-charcoal/70"
+            <div className="mb-4 flex items-start gap-6">
+              <span className="font-heading text-h3 text-stone/50 tabular-nums">
+                {String(i + 1).padStart(2, "0")}
+              </span>
+              <div className="flex-1 pt-1">
+                <div className="flex items-center justify-between gap-4">
+                  <h3 className="font-heading text-h3 text-charcoal">
+                    {t(`${treatment.slug}.name`)}
+                  </h3>
+                  {treatment.href && (
+                    <span
+                      aria-hidden="true"
+                      className="font-body text-pine text-lg rtl:-scale-x-100"
+                    >
+                      ↗
+                    </span>
                   )}
-                >
-                  {t(`${treatment.slug}.name`)}
-                </h3>
+                </div>
               </div>
-              {treatment.href && (
-                <span aria-hidden="true" className="font-body text-pine text-lg rtl:-scale-x-100">
-                  ↗
-                </span>
-              )}
             </div>
             <div
               className={cn(
@@ -107,9 +114,7 @@ export default function TreatmentSelector() {
               )}
               style={{ backgroundImage: `url(${treatment.image})` }}
             />
-            <Text muted className={cn(!treatment.href && "text-stone/70")}>
-              {t(`${treatment.slug}.desc`)}
-            </Text>
+            <Text muted>{t(`${treatment.slug}.desc`)}</Text>
           </TreatmentRow>
         ))}
       </div>
