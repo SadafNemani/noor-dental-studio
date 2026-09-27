@@ -33,11 +33,11 @@ const envStyles = {
     boxShadow: "0 20px 40px rgba(35,36,25,0.10)",
   },
   solid: {
-    backgroundColor: "rgba(255,253,251,0.92)",
+    backgroundColor: "rgba(253,252,249,0.7)",
     color: "#26241F",
     borderRadius: 24,
     marginTop: 14,
-    boxShadow: "0 20px 40px rgba(35,36,25,0.10)",
+    boxShadow: "0 8px 32px rgba(35,36,25,0.06)",
   },
 } as const;
 
@@ -58,7 +58,7 @@ export default function Navbar() {
       <motion.div
         animate={envStyles[environment]}
         transition={{ duration: 0.5, ease: "easeInOut" }}
-        className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 backdrop-blur-md md:px-8"
+        className="mx-auto flex max-w-7xl items-center justify-between border border-black/5 px-6 py-4 backdrop-blur-xl md:px-8"
       >
         <Link href="/" className="font-heading text-2xl">
           Noor

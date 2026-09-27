@@ -1,12 +1,10 @@
 import { getTranslations } from "next-intl/server";
 import Container from "./Container";
-import Button from "../ui/Button";
 import { clinicInfo } from "@/data/clinicInfo";
 import { IconBrandWhatsapp, IconClock, IconMapPin, IconPhone } from "@tabler/icons-react";
 
 export default async function Footer() {
   const t = await getTranslations("footer");
-  const tNav = await getTranslations("nav");
 
   return (
     <footer className="border-sand border-t py-6">
@@ -34,9 +32,6 @@ export default async function Footer() {
             <bdi dir="ltr">{clinicInfo.phone}</bdi>
           </a>
         </div>
-        <Button href="/booking" variant="primary">
-          {tNav("bookAVisit")}
-        </Button>
       </Container>
     </footer>
   );

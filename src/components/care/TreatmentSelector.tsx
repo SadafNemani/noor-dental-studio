@@ -6,6 +6,8 @@ import { AnimatePresence, motion } from "motion/react";
 import TreatmentRow from "./TreatmentRow";
 import Text from "../typography/Text";
 import { treatments } from "@/data/treatments";
+import { cn } from "@/lib/cn";
+import { IconArrowUpRight } from "@tabler/icons-react";
 
 export default function TreatmentSelector() {
   const t = useTranslations("yourCare.treatments");
@@ -22,55 +24,66 @@ export default function TreatmentSelector() {
 
   return (
     <div>
-      <div className="hidden md:grid md:grid-cols-[1.3fr_1fr] md:items-start md:gap-16">
+      <div className="hidden md:grid md:grid-cols-[1.05fr_0.95fr] md:items-start md:gap-16">
         <div>
-          {treatments.map((treatment, i) => (
-            <TreatmentRow
-              key={treatment.slug}
-              href={treatment.href}
-              isActive={focused === null ? undefined : focused === i}
-              onMouseEnter={() => handleEnter(i)}
-              onMouseLeave={handleLeave}
-              onFocus={() => handleEnter(i)}
-              onBlur={handleLeave}
-            >
-              <div className="group flex items-baseline gap-6">
-                <span className="font-heading text-h3 text-stone/50 tabular-nums">
-                  {String(i + 1).padStart(2, "0")}
-                </span>
-                <div className="flex-1 pt-1">
-                  <div className="flex items-center justify-between gap-4">
-                    <h3 className="font-heading text-h3 text-charcoal">
-                      {t(`${treatment.slug}.name`)}
-                    </h3>
-                    {treatment.href && (
-                      <span
-                        aria-hidden="true"
-                        className="font-body text-pine text-lg transition-transform duration-300 group-hover:translate-x-1 rtl:-scale-x-100 rtl:group-hover:-translate-x-1"
-                      >
-                        ↗
-                      </span>
+          {treatments.map((treatment, i) => {
+            const isActive = focused === i;
+            return (
+              <TreatmentRow
+                key={treatment.slug}
+                href={treatment.href}
+                isActive={isActive}
+                onMouseEnter={() => handleEnter(i)}
+                onMouseLeave={handleLeave}
+                onFocus={() => handleEnter(i)}
+                onBlur={handleLeave}
+              >
+                <div className="flex items-center gap-6">
+                  <span
+                    className={cn(
+                      "font-heading text-[clamp(2.5rem,4vw,3.5rem)] leading-none tabular-nums transition-colors duration-300",
+                      isActive ? "text-gold" : "text-charcoal/25"
                     )}
-                  </div>
+                  >
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <div className="flex-1 pt-1">
+                    <div className="flex items-center justify-between gap-4">
+                      <h3 className="font-heading text-h3 text-charcoal">
+                        {t(`${treatment.slug}.name`)}
+                      </h3>
+                      {treatment.href && (
+                        <IconArrowUpRight
+                          size={26}
+                          className="animate-bounce-diagonal text-pine rtl:-scale-x-100"
+                          aria-hidden="true"
+                        />
+                      )}
+                    </div>
 
-                  <Text muted className="mt-1 max-w-95">
-                    {t(`${treatment.slug}.desc`)}
-                  </Text>
+                    <Text muted className="mt-1 max-w-95">
+                      {t(`${treatment.slug}.desc`)}
+                    </Text>
+
+                    <Text muted className="text-label text-stone/60 mt-2 tracking-wide uppercase">
+                      {t(`${treatment.slug}.meta`)}
+                    </Text>
+                  </div>
                 </div>
-              </div>
-            </TreatmentRow>
-          ))}
+              </TreatmentRow>
+            );
+          })}
         </div>
 
-        <div className="rounded-card bg-sand sticky top-32 overflow-hidden">
-          <AnimatePresence mode="wait">
+        <div className="noor-image-frame sticky aspect-square overflow-hidden">
+          <AnimatePresence>
             <motion.div
               key={treatments[activeImage].slug}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
+              initial={{ clipPath: "inset(100% 0 0 0)", scale: 1.1 }}
+              animate={{ clipPath: "inset(0% 0 0 0)", scale: 1 }}
               exit={{ opacity: 0 }}
-              transition={{ duration: 0.45, ease: "easeOut" }}
-              className="aspect-square bg-cover bg-center"
+              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+              className="absolute inset-0 bg-cover bg-center"
               style={{ backgroundImage: `url(${treatments[activeImage].image})` }}
             />
           </AnimatePresence>
@@ -81,7 +94,7 @@ export default function TreatmentSelector() {
         {treatments.map((treatment, i) => (
           <TreatmentRow key={treatment.slug} href={treatment.href}>
             <div className="mb-4 flex items-start gap-6">
-              <span className="font-heading text-h3 text-stone/50 tabular-nums">
+              <span className="font-heading text-h3 text-charcoal/70 tabular-nums">
                 {String(i + 1).padStart(2, "0")}
               </span>
               <div className="flex-1 pt-1">
@@ -101,7 +114,7 @@ export default function TreatmentSelector() {
               </div>
             </div>
             <div
-              className="rounded-card bg-sand mb-3 aspect-square bg-cover bg-center"
+              className="noor-image-frame bg-sand mb-3 aspect-4/5 bg-cover bg-center"
               style={{ backgroundImage: `url(${treatment.image})` }}
             />
             <Text muted>{t(`${treatment.slug}.desc`)}</Text>
