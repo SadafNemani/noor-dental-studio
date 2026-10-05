@@ -9,6 +9,7 @@ import { AnimatePresence, motion } from "motion/react";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
 import { useIsMobile } from "@/hooks/useIsMobile";
 import { useDirection } from "@/hooks/useDirection";
+import { useNavEnvironment } from "@/context/NavEnvironmentContext";
 import { journeySteps } from "@/data/invisalignJourney";
 import Heading from "../typography/Heading";
 import { cn } from "@/lib/cn";
@@ -26,6 +27,7 @@ export default function StepJourney() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [direction, setDirection] = useState(1);
   const total = journeySteps.length;
+  const { setEnvironment } = useNavEnvironment();
 
   useGSAP(
     () => {
@@ -48,6 +50,9 @@ export default function StepJourney() {
           }
           setActiveIndex((prev) => (prev === idx ? prev : idx));
         },
+        onEnter: () => setEnvironment("dark"),
+        onLeaveBack: () => setEnvironment("solid"),
+        onLeave: () => setEnvironment("solid"),
       });
     },
     { scope: sectionRef, dependencies: [prefersReducedMotion] }
