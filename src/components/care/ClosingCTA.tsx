@@ -16,7 +16,7 @@ export default function ClosingCTA() {
         style={{ backgroundImage: "url(/images/care-closing-room.webp" }}
       />
 
-      <div className="bg-pine p10 flex flex-col justify-center md:p-14">
+      <div className="bg-pine flex flex-col justify-center p-10 md:p-14">
         <Arrive>
           <Heading size="h2" className="text-gold mb-4">
             {t("heading")}

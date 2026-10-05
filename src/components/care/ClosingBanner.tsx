@@ -14,11 +14,11 @@ export default function ClosingBanner() {
       <Container>
         <Arrive>
           <div
-            className="rounded-card relative flex min-h-70 items-center justify-end overflow-hidden bg-cover bg-center p-10 md:min-h-90 md:p-16"
+            className="rounded-card relative flex h-50 items-center justify-end overflow-hidden bg-cover bg-center p-10 md:h-70 md:p-16"
             style={{ backgroundImage: "url(/images/care-banner-plant.webp" }}
           >
-            <div className="from-ivory/70 via-ivory/10 absolute inset-0 bg-linear-to-r to-transparent" />
-            <div className="relative max-w-[320px] text-end">
+            <div className="to-ivory/70 from-ivory/30 pointer-events-none absolute inset-0 bg-linear-to-r md:from-transparent" />
+            <div className="relative ml-auto text-right">
               <Heading size="h2" className="mb-3">
                 <span className="block">{t.rich("heading", richText)}</span>
               </Heading>

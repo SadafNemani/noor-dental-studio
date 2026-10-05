@@ -190,7 +190,9 @@
       },
       "support": { "title": "A supportive team", "desc": "That puts you at ease." }
     },
-    "banner": { "heading": "Healthy smiles.<br></br>Longer lives." }
+    "banner": {
+      "heading": "Healthy <accent2>smiles</accent2>.<br></br>Longer <accent>lives</accent>."
+    }
   },
   "about": {
     "hero": { "eyebrow": "Meet Dr. Noor" },

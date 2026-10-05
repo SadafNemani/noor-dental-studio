@@ -185,7 +185,7 @@
       "technology": { "title": "تقنية حديثة", "desc": "لنتائج أكثر دقة وراحة." },
       "support": { "title": "فريق داعم", "desc": "يمنحك الطمأنينة." }
     },
-    "banner": { "heading": "ابتسامات صحية.<br></br>حياة أطول." }
+    "banner": { "heading": "ابتسامات <accent2>صحية</accent2>.<br></br>حياة <accent>أطول</accent>." }
   },
   "about": {
     "hero": { "eyebrow": "تعرف على د. نور" },

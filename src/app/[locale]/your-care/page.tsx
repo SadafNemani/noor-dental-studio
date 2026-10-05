@@ -70,7 +70,7 @@ export default async function YourCarePage() {
         </Container>
       </section>
 
-      <section className="py-20 md:py-28">
+      <section className="pt-20 md:pt-28">
         <Container>
           <ClosingCTA />
         </Container>

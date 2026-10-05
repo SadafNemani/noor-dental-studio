@@ -114,7 +114,7 @@ export default function TreatmentSelector() {
               </div>
             </div>
             <div
-              className="noor-image-frame bg-sand mb-3 aspect-4/5 bg-cover bg-center"
+              className="noor-image-frame bg-sand mb-3 aspect-square bg-cover bg-center"
               style={{ backgroundImage: `url(${treatment.image})` }}
             />
             <Text muted>{t(`${treatment.slug}.desc`)}</Text>
