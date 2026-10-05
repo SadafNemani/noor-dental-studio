@@ -22,6 +22,7 @@ export default function SplitCTA({ image, heading, body, ctaLabel, ctaHref }: Sp
       />
       <div className="bg-pine flex flex-col justify-center p-10 md:p-14">
         <Arrive>
+          <div className="bg-gold mb-6 h-0.5 w-10" />
           <Heading size="h2" className="text-gold mb-4">
             {heading}
           </Heading>

@@ -9,9 +9,9 @@ import ScrollCue from "@/components/care/ScrollCue";
 import Footer from "@/components/layout/Footer";
 import SolidNavTrigger from "@/components/layout/SolidNavTrigger";
 import { richText } from "@/lib/richText";
-import ClosingCTA from "@/components/care/ClosingCTA";
 import WhyNoorPillars from "@/components/care/WhyNoorPillars";
 import ClosingBanner from "@/components/care/ClosingBanner";
+import SplitCTA from "@/components/shared/SplitCTA";
 
 export default async function YourCarePage() {
   const t = await getTranslations("yourCare");
@@ -72,7 +72,13 @@ export default async function YourCarePage() {
 
       <section className="pt-20 md:pt-28">
         <Container>
-          <ClosingCTA />
+          <SplitCTA
+            image="/images/care-closing-room.webp"
+            heading={t("closing.heading")}
+            body={t("closing.body")}
+            ctaLabel={t("closing.cta")}
+            ctaHref="/booking"
+          />
         </Container>
       </section>
 
