@@ -62,9 +62,10 @@
   },
   "invisalign": {
     "hero": {
-      "eyebrow": "Invisalign at Noor",
+      "eyebrow": "Invisalign",
       "heading": "See where your smile could go.",
-      "sub": "A clear, comfortable way to straighten your smile — on your schedule, not a rushed one."
+      "sub": "A clear, comfortable way to straighten your smile — on your schedule, not a rushed one.",
+      "cta": "See the journey"
     },
     "compare": { "heading": "See the difference", "before": "Before", "after": "After" },
     "technology": {
