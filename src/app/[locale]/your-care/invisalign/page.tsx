@@ -141,7 +141,7 @@ export default async function InvisalignPage() {
       <section className="py-20 md:py-28">
         <Container>
           <SplitCTA
-            image="/images/invisalign-closing.jpg"
+            image="/images/invisalign-closing.webp"
             heading={t("closing.heading")}
             body={t("pricing.body")}
             ctaLabel={t("closing.cta")}
