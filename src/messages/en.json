@@ -87,28 +87,38 @@
       },
       "reveal": { "title": "Reveal", "desc": "Your new smile, exactly as planned." }
     },
-    "compare": { "heading": "See the difference", "before": "Before", "after": "After" },
-    "technology": {
-      "heading": "Technology that gets out of your way",
-      "body": "Our digital scanner replaces messy molds with a quick 3D scan, so you can see your projected result before committing to anything — and your treatment plan adjusts precisely as your smile moves."
+    "compare": {
+      "heading": "See the difference",
+      "before": "Before",
+      "after": "After",
+      "hint": "Drag to compare",
+      "galleryLabel": "Choose a comparison",
+      "caseLabel": "Comparison {n}"
     },
     "pricing": {
       "heading": "Pricing guidance",
-      "body": "Invisalign treatment typically ranges from AED 12,000–20,000 depending on complexity and length of treatment. We'll give you an exact plan and cost at your consultation.",
+      "range": "AED 12,000 – 20,000",
+      "body": "The final figure depends on complexity and length of treatment. We'll give you an exact plan at your consultation, before you commit to anything.",
       "cta": "Book a consultation"
     },
     "testimonials": {
       "heading": "What patients say",
       "sara": {
-        "quote": "I compared four clinics and this was the only one that didn't rush me into a decision.",
-        "name": "Sara"
+        "quote": "The only clinic that didn't rush me into a decision.",
+        "name": "Sara",
+        "role": "Invisalign patient"
       },
       "omar": {
-        "quote": "The scan alone made me understand exactly what to expect before I said yes.",
-        "name": "Omar"
+        "quote": "The scan showed me exactly what to expect.",
+        "name": "Omar",
+        "role": "Invisalign patient"
       }
     },
-    "closing": { "heading": "Ready to explore your options?", "cta": "Book a consultation" }
+    "closing": {
+      "heading": "Ready to explore your options?",
+      "body": "Book a consultation and we'll map out your plan together.",
+      "cta": "Book a consultation"
+    }
   },
   "firstVisit": {
     "hero": {
