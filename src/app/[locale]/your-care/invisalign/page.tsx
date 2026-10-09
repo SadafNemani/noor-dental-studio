@@ -11,6 +11,7 @@ import CompareSlider from "@/components/compare/CompareSlider";
 import SplitCTA from "@/components/shared/SplitCTA";
 import Footer from "@/components/layout/Footer";
 import SolidNavTrigger from "@/components/layout/SolidNavTrigger";
+import { richText } from "@/lib/richText";
 
 export default async function InvisalignPage() {
   const t = await getTranslations("invisalign");
@@ -32,7 +33,7 @@ export default async function InvisalignPage() {
                   size="h1"
                   className="mb-6 text-[clamp(3rem,6vw,5.5rem)] leading-[1.05] tracking-[-0.01em] text-balance"
                 >
-                  {t("hero.heading")}
+                  {t.rich("hero.heading", richText)}
                 </Heading>
               </Arrive>
 
@@ -48,7 +49,7 @@ export default async function InvisalignPage() {
             </div>
 
             <Arrive delay={0.12} className="hidden md:block">
-              <div className="noor-image-frame relative -ms-16 mt-4 aspect-3/4 w-full max-w-75 overflow-hidden">
+              <div className="noor-image-frame relative -ms-16 mt-4 aspect-4/3 w-full overflow-hidden">
                 <div
                   className="absolute inset-0 bg-cover bg-center"
                   style={{ backgroundImage: "url(/images/invisalign-hero.webp)" }}

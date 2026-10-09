@@ -63,7 +63,7 @@
   "invisalign": {
     "hero": {
       "eyebrow": "Invisalign",
-      "heading": "See where your smile could go.",
+      "heading": "See where <accent2>your</accent2> <accent>smile</accent> could go.",
       "sub": "A clear, comfortable way to straighten your smile — on your schedule, not a rushed one.",
       "cta": "See the journey"
     },
@@ -94,6 +94,10 @@
       "hint": "Drag to compare",
       "galleryLabel": "Choose a comparison",
       "caseLabel": "Comparison {n}"
+    },
+    "technology": {
+      "heading": "Technology that gets out of your way",
+      "body": "Our digital scanner replaces messy molds with a quick 3D scan, so you can see your projected result before committing to anything — and your treatment plan adjusts precisely as your smile moves."
     },
     "pricing": {
       "heading": "Pricing guidance",
