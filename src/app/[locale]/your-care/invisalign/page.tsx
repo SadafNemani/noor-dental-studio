@@ -121,17 +121,39 @@ export default async function InvisalignPage() {
               {t("testimonials.heading")}
             </Heading>
           </Arrive>
-          <div className="mx-auto grid max-w-225 grid-cols-1 gap-10 md:grid-cols-2">
-            {(["sara", "omar"] as const).map((key, i) => (
-              <Arrive key={key} delay={i * 0.1}>
-                <p className="font-heading text-h3 text-charcoal mb-4 leading-snug">
-                  {t(`testimonials.${key}.quote`)}
-                </p>
-                <Text muted className="text-label tracking-wide uppercase">
-                  {t(`testimonials.${key}.name`)}
-                </Text>
-              </Arrive>
-            ))}
+          <div className="mx-auto grid max-w-225 grid-cols-1 gap-6 md:grid-cols-2">
+            {(["sara", "omar"] as const).map((key, i) => {
+              const name = t(`testimonials.${key}.name`);
+              return (
+                <Arrive key={key} delay={i * 0.1}>
+                  <figure className="rounded-card shadow-soft relative h-full bg-white p-8 pt-12">
+                    <span
+                      aria-hidden="true"
+                      className="font-heading text-gold/70 absolute inset-s-6 top-3 text-[5rem] leading-none"
+                    >
+                      “
+                    </span>
+                    <blockquote className="font-heading text-h3 text-charcoal mb-8 leading-snug">
+                      {t(`testimonials.${key}.quote`)}
+                    </blockquote>
+                    <figcaption className="border-sand flex items-center gap-3 border-t pt-5">
+                      <span
+                        aria-hidden="true"
+                        className="bg-pine font-heading text-ivory flex h-10 w-10 items-center justify-center rounded-full"
+                      >
+                        {name.charAt(0)}
+                      </span>
+                      <span>
+                        <span className="text-charcoal block text-sm font-medium">{name}</span>
+                        <span className="text-label text-stone block">
+                          {t(`testimonials.${key}.role`)}
+                        </span>
+                      </span>
+                    </figcaption>
+                  </figure>
+                </Arrive>
+              );
+            })}
           </div>
         </Container>
       </section>
