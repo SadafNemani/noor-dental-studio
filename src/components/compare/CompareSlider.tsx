@@ -15,6 +15,7 @@ type CompareSliderProps = {
   autoSweep?: boolean;
   fill?: boolean;
   className?: string;
+  backgroundPosition: string;
 };
 
 export default function CompareSlider({
@@ -25,6 +26,7 @@ export default function CompareSlider({
   autoSweep = false,
   fill = false,
   className,
+  backgroundPosition,
 }: CompareSliderProps) {
   const t = useTranslations("compare");
   const containerRef = useRef<HTMLDivElement>(null);
@@ -77,15 +79,19 @@ export default function CompareSlider({
       onPointerCancel={() => (draggingRef.current = false)}
     >
       <div
-        className="absolute inset-0 bg-cover bg-center"
-        style={{ backgroundImage: `url(${afterImage})` }}
+        className="absolute inset-0 bg-cover"
+        style={{
+          backgroundImage: `url(${afterImage})`,
+          backgroundPosition: `${backgroundPosition}`,
+        }}
       />
 
       <div
-        className="absolute inset-0 bg-cover bg-center"
+        className="absolute inset-0 bg-cover"
         style={{
           backgroundImage: `url(${beforeImage})`,
           clipPath: `inset(0 ${100 - percent}% 0 0)`,
+          backgroundPosition: `${backgroundPosition}`,
         }}
       />
 

@@ -31,6 +31,7 @@ export default function CompareGallery() {
             afterImage={current.after}
             beforeLabel={t("before")}
             afterLabel={t("after")}
+            backgroundPosition={current.backgroundPosition}
           />
         </motion.div>
       </AnimatePresence>
