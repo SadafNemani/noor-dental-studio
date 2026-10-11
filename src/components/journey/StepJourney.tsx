@@ -34,12 +34,72 @@ export default function StepJourney() {
     () => {
       if (prefersReducedMotion || !sectionRef.current) return;
 
+      const BLUR = isMobile ? 8 : 14;
+      const BLUR_WINDOW = 0.3;
+      const PUSH = 1.06;
+      const PEAK = 1.12;
+
+      const layers = gsap.utils.toArray<HTMLElement>(".journey-layer", sectionRef.current);
+      const last = layers.length - 1;
+      const tl = gsap.timeline();
+
+      layers.forEach((layer, i) => {
+        const entry = i - 0.5;
+        const exit = i + 0.5;
+        const sharpFrom = i === 0 ? 0 : entry + BLUR_WINDOW;
+        const sharpTo = i === last ? last : exit - BLUR_WINDOW;
+
+        if (i > 0) {
+          tl.set(layer, { autoAlpha: 1 }, entry);
+          tl.fromTo(
+            layer,
+            { filter: `blur(${BLUR}px)`, scale: PEAK },
+            {
+              filter: "blur(0px)",
+              scale: 1,
+              duration: BLUR_WINDOW,
+              ease: "power2.out",
+              immediateRender: false,
+            },
+            entry
+          );
+        }
+
+        if (sharpTo > sharpFrom) {
+          tl.fromTo(
+            layer,
+            { scale: 1 },
+            { scale: PUSH, ease: "none", duration: sharpTo - sharpFrom, immediateRender: false },
+            sharpFrom
+          );
+        }
+
+        if (i < last) {
+          tl.fromTo(
+            layer,
+            { filter: "blur(0px)", scale: PUSH },
+            {
+              filter: `blur(${BLUR}px)`,
+              scale: PEAK,
+              duration: BLUR_WINDOW,
+              ease: "power2.in",
+              immediateRender: false,
+            },
+            sharpTo
+          );
+          tl.set(layer, { autoAlpha: 0 }, exit);
+        }
+      });
+
+      tl.set({}, {}, last);
+
       ScrollTrigger.create({
         trigger: sectionRef.current,
         start: "top top",
         end: `+=${window.innerHeight * (total - 1)}`,
         pin: true,
-        scrub: 1,
+        scrub: 0.8,
+        animation: tl,
         onUpdate: (self) => {
           if (lineRef.current) {
             lineRef.current.style.width = `${self.progress * 100}%`;
@@ -77,7 +137,7 @@ export default function StepJourney() {
     >
       <JourneyBackdrop
         images={journeySteps.map((s) => s.image)}
-        activeIndex={prefersReducedMotion ? total - 1 : activeIndex}
+        staticIndex={prefersReducedMotion ? total - 1 : undefined}
       />
 
       <div className="relative z-10 flex flex-col">

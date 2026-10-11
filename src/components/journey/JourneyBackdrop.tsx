@@ -1,26 +1,23 @@
-import { cn } from "@/lib/cn";
-
-export default function JourneyBackdrop({
-  images,
-  activeIndex,
-}: {
+type JourneyBackdropProps = {
   images: readonly string[];
-  activeIndex: number;
-}) {
+  staticIndex?: number;
+};
+
+export default function JourneyBackdrop({ images, staticIndex }: JourneyBackdropProps) {
+  const isStatic = staticIndex !== undefined;
   return (
     <div aria-hidden="true" className="bg-pine-deep absolute inset-0 overflow-hidden">
-      {images.map((src, i) => (
-        <div
-          key={src}
-          className={cn(
-            "absolute inset-0 bg-cover bg-center transition-[opacity,transform] duration-1400 ease-out motion-reduce:transition-none",
-            i === activeIndex && "scale-100 opacity-100",
-            i < activeIndex && "scale-[1.15] opacity-0",
-            i > activeIndex && "scale-[0.92] opacity-0"
-          )}
-          style={{ backgroundImage: `url(${src})` }}
-        />
-      ))}
+      {images.map((src, i) => {
+        const shown = isStatic ? i === staticIndex : i === 0;
+
+        return (
+          <div
+            key={src}
+            className="journey-layer absolute inset-0 bg-cover bg-center will-change-[transform,filter]"
+            style={{ backgroundImage: `url(${src})`, opacity: shown ? 1 : 0 }}
+          />
+        );
+      })}
       <div className="from-pine-deep/85 via-pine-deep/40 to-pine-deep/60 absolute inset-0 bg-linear-to-t" />
     </div>
   );
