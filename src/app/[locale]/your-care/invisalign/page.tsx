@@ -12,6 +12,7 @@ import Footer from "@/components/layout/Footer";
 import SolidNavTrigger from "@/components/layout/SolidNavTrigger";
 import { richText } from "@/lib/richText";
 import CompareGallery from "@/components/compare/CompareGallery";
+import { IconCoin } from "@tabler/icons-react";
 
 export default async function InvisalignPage() {
   const t = await getTranslations("invisalign");
@@ -94,9 +95,17 @@ export default async function InvisalignPage() {
       <section className="py-20 md:py-28">
         <Container>
           <Arrive className="mx-auto max-w-140 text-center">
-            <Heading size="h2" className="mb-4">
-              {t("pricing.heading")}
-            </Heading>
+            <IconCoin
+              size={36}
+              strokeWidth={1.25}
+              className="text-gold mx-auto mb-5"
+              aria-hidden="true"
+            />
+            <Eyebrow className="mb-3">{t("pricing.heading")}</Eyebrow>
+            <p className="font-heading text-charcoal mb-5 text-[clamp(2.25rem,5vw,3.75rem)] leading-none font-semibold">
+              <bdi>{t("pricing.range")}</bdi>
+            </p>
+            <div className="bg-gold mx-auto mb-6 h-px w-10" />
             <Text muted className="mb-8 text-pretty">
               {t("pricing.body")}
             </Text>
