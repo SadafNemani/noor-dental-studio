@@ -1,90 +1,114 @@
 "use client";
 
+import { useCallback, useEffect, useRef, useState } from "react";
 import { useTranslations } from "next-intl";
-import React, { useRef, useState, useCallback } from "react";
-import Text from "../typography/Text";
+import { animate, useInView } from "motion/react";
+import { IconArrowsHorizontal } from "@tabler/icons-react";
+import { useReducedMotion } from "@/hooks/useReducedMotion";
 import { cn } from "@/lib/cn";
 
 type CompareSliderProps = {
+  beforeImage: string;
+  afterImage: string;
   beforeLabel: string;
   afterLabel: string;
+  autoSweep?: boolean;
+  fill?: boolean;
   className?: string;
 };
 
-export default function CompareSlider({ beforeLabel, afterLabel, className }: CompareSliderProps) {
+export default function CompareSlider({
+  beforeImage,
+  afterImage,
+  beforeLabel,
+  afterLabel,
+  autoSweep = false,
+  fill = false,
+  className,
+}: CompareSliderProps) {
   const t = useTranslations("compare");
   const containerRef = useRef<HTMLDivElement>(null);
-  const [percent, setPercent] = useState(50);
   const draggingRef = useRef(false);
+  const sweepRef = useRef<{ stop: () => void } | null>(null);
+  const userControlledRef = useRef(false);
+  const [percent, setPercent] = useState(50);
+  const prefersReducedMotion = useReducedMotion();
+  const inView = useInView(containerRef, { once: true, amount: 0.6 });
+
+  const takeControl = useCallback(() => {
+    userControlledRef.current = true;
+    sweepRef.current?.stop();
+  }, []);
+
+  useEffect(() => {
+    if (!autoSweep || !inView || prefersReducedMotion || userControlledRef.current) return;
+    const controls = animate(0, 1, {
+      duration: 3.6,
+      delay: 0.6,
+      ease: "easeInOut",
+      onUpdate: (v) => setPercent(50 + Math.sin(v * Math.PI * 2) * 14),
+    });
+    sweepRef.current = controls;
+    return () => controls.stop();
+  }, [autoSweep, inView, prefersReducedMotion]);
 
   const updateFromClientX = useCallback((clientX: number) => {
     const rect = containerRef.current?.getBoundingClientRect();
     if (!rect) return;
-    const raw = ((clientX - rect.left) / rect.width) * 100;
-    setPercent(Math.min(100, Math.max(0, raw)));
+    setPercent(Math.min(100, Math.max(0, ((clientX - rect.left) / rect.width) * 100)));
   }, []);
-
-  const handlePointerDown = (e: React.PointerEvent) => {
-    draggingRef.current = true;
-    containerRef.current?.setPointerCapture(e.pointerId);
-    updateFromClientX(e.clientX);
-  };
-
-  const handlePointerMove = (e: React.PointerEvent) => {
-    if (!draggingRef.current) return;
-    updateFromClientX(e.clientX);
-  };
-
-  const stopDragging = () => {
-    draggingRef.current = false;
-  };
-
-  const handleKeyDown = (e: React.KeyboardEvent) => {
-    if (e.key === "ArrowLeft") setPercent((p) => Math.max(0, p - 2));
-    if (e.key === "ArrowRight") setPercent((p) => Math.min(100, p + 2));
-  };
 
   return (
     <div
       ref={containerRef}
       className={cn(
-        "rounded-card relative aspect-4/3 w-full cursor-grab overflow-hidden select-none active:cursor-grabbing",
+        "relative w-full cursor-grab touch-pan-y overflow-hidden select-none active:cursor-grabbing",
+        fill ? "h-full" : "rounded-card aspect-4/3",
         className
       )}
-      onPointerDown={handlePointerDown}
-      onPointerMove={handlePointerMove}
-      onPointerUp={stopDragging}
-      onPointerCancel={stopDragging}
+      onPointerDown={(e) => {
+        takeControl();
+        draggingRef.current = true;
+        containerRef.current?.setPointerCapture(e.pointerId);
+        updateFromClientX(e.clientX);
+      }}
+      onPointerMove={(e) => draggingRef.current && updateFromClientX(e.clientX)}
+      onPointerUp={() => (draggingRef.current = false)}
+      onPointerCancel={() => (draggingRef.current = false)}
     >
-      {/* after */}
-      <div className="bg-sand absolute inset-0 flex items-center justify-center">
-        <Text as="span" muted className="text-xs">
-          {afterLabel} photograph
-        </Text>
-      </div>
-
-      {/* before */}
       <div
-        className="bg-stone/30 absolute inset-0 flex items-center justify-center"
-        style={{ clipPath: `inset(0 ${100 - percent}% 0 0)` }}
-      >
-        <Text as="span" muted className="text-xs">
-          {beforeLabel} photograph
-        </Text>
-      </div>
+        className="absolute inset-0 bg-cover bg-center"
+        style={{ backgroundImage: `url(${afterImage})` }}
+      />
 
-      {/* labels */}
-      <span className="bg-charcoal/70 text-label text-ivory absolute top-4 left-4 rounded-full px-3 py-1">
+      <div
+        className="absolute inset-0 bg-cover bg-center"
+        style={{
+          backgroundImage: `url(${beforeImage})`,
+          clipPath: `inset(0 ${100 - percent}% 0 0)`,
+        }}
+      />
+
+      <span
+        className={cn(
+          "bg-charcoal/70 text-label text-ivory absolute left-4 rounded-full px-3 py-1",
+          fill ? "top-24 md:top-28" : "top-4"
+        )}
+      >
         {beforeLabel}
       </span>
-      <span className="bg-charcoal/70 text-label text-ivory absolute top-4 right-4 rounded-full px-3 py-1">
+      <span
+        className={cn(
+          "bg-charcoal/70 text-label text-ivory absolute right-4 rounded-full px-3 py-1",
+          fill ? "top-24 md:top-28" : "top-4"
+        )}
+      >
         {afterLabel}
       </span>
 
-      {/* divider + handle */}
       <div
         className="bg-ivory pointer-events-none absolute inset-y-0 w-0.5"
-        style={{ left: `${percent}` }}
+        style={{ left: `${percent}%` }}
       >
         <div
           role="slider"
@@ -93,10 +117,15 @@ export default function CompareSlider({ beforeLabel, afterLabel, className }: Co
           aria-valuemin={0}
           aria-valuemax={100}
           aria-label={t("sliderLabel", { before: beforeLabel, after: afterLabel })}
-          onKeyDown={handleKeyDown}
-          className="text-charcoal pointer-events-auto"
-          aria-hidden="true"
-        />
+          onKeyDown={(e) => {
+            takeControl();
+            if (e.key === "ArrowLeft") setPercent((p) => Math.max(0, p - 2));
+            if (e.key === "ArrowRight") setPercent((p) => Math.min(100, p + 2));
+          }}
+          className="bg-ivory shadow-soft pointer-events-auto absolute top-1/2 flex h-12 w-12 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full"
+        >
+          <IconArrowsHorizontal size={20} className="text-charcoal" aria-hidden="true" />
+        </div>
       </div>
     </div>
   );

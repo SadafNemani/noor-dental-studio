@@ -7,11 +7,11 @@ import Arrive from "@/components/motion/Arrive";
 import Button from "@/components/ui/Button";
 import ScrollCue from "@/components/care/ScrollCue";
 import StepJourney from "@/components/journey/StepJourney";
-import CompareSlider from "@/components/compare/CompareSlider";
 import SplitCTA from "@/components/shared/SplitCTA";
 import Footer from "@/components/layout/Footer";
 import SolidNavTrigger from "@/components/layout/SolidNavTrigger";
 import { richText } from "@/lib/richText";
+import CompareGallery from "@/components/compare/CompareGallery";
 
 export default async function InvisalignPage() {
   const t = await getTranslations("invisalign");
@@ -65,20 +65,6 @@ export default async function InvisalignPage() {
         <StepJourney />
       </div>
 
-      <section className="py-20 md:py-28">
-        <Container>
-          <Arrive>
-            <Heading size="h2" className="mb-10 text-center">
-              {t("compare.heading")}
-            </Heading>
-          </Arrive>
-
-          <Arrive delay={0.1} className="mx-auto max-w-160">
-            <CompareSlider beforeLabel={t("compare.before")} afterLabel={t("compare.after")} />
-          </Arrive>
-        </Container>
-      </section>
-
       <section className="from-ivory bg-linear-to-b via-[#F6F1E8] to-[#EFE6D6] py-20 md:py-28">
         <Container>
           <div className="grid grid-cols-1 items-center gap-12 md:grid-cols-2">
@@ -102,6 +88,8 @@ export default async function InvisalignPage() {
           </div>
         </Container>
       </section>
+
+      <CompareGallery />
 
       <section className="py-20 md:py-28">
         <Container>
