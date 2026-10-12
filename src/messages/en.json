@@ -126,12 +126,22 @@
   },
   "firstVisit": {
     "hero": {
-      "heading": "Wondering what will happen?",
+      "eyebrow": "Your first visit",
+      "heading": "Wondering <accent>what will happen</accent>?",
       "sub": "Here's exactly what your first visit looks like."
+    },
+    "journey": {
+      "eyebrow": "The visit, step by step",
+      "heading": "Six steps. No surprises."
     },
     "control": {
       "heading": "You're always in control.",
-      "body": "If something feels uncomfortable, say so — we pause. You can ask us to slow down, explain again, or stop entirely at any point. Sedation and comfort options are always available if you'd like them; we'll never assume."
+      "body": "If something feels uncomfortable, say so — we pause. You can ask us to slow down, explain again, or stop entirely at any point. Sedation and comfort options are always available if you'd like them; we'll never assume.",
+      "points": {
+        "pause": "Pause whenever you need",
+        "ask": "Ask anything, any time",
+        "choose": "Choose your comfort options"
+      }
     },
     "faq": {
       "heading": "Common questions",
@@ -152,7 +162,11 @@
         "a": "Of course — bring anyone who helps you feel more at ease."
       }
     },
-    "closing": { "heading": "Whenever you're ready, we're here.", "cta": "Book a visit" }
+    "closing": {
+      "heading": "Whenever you're ready, we're here.",
+      "body": "No pressure, no rushed decisions.",
+      "cta": "Book a visit"
+    }
   },
   "compare": {
     "sliderLabel": "Comparison slider between {before} and {after}"
