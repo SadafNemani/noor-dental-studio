@@ -1,50 +1,68 @@
 "use client";
 
 import { useState } from "react";
-import { useTranslations } from "next-intl";
 import { AnimatePresence, motion } from "motion/react";
-import { firstVisitSteps } from "@/data/firstVisitJourney";
+import { IconChevronDown } from "@tabler/icons-react";
 import Heading from "../typography/Heading";
 import Text from "../typography/Text";
 import Arrive from "../motion/Arrive";
 import { cn } from "@/lib/cn";
-import { IconChevronDown } from "@tabler/icons-react";
 
-export default function StepAccordion() {
-  const t = useTranslations("firstVisit.journey");
-  const [openKey, setOpenKey] = useState<string | null>(firstVisitSteps[0]);
+export type AccordionItem = {
+  id: string;
+  title: string;
+  body: string;
+};
+
+type StepAccordionProps = {
+  items: AccordionItem[];
+  numbered?: boolean;
+  defaultOpenId?: string | null;
+  className?: string;
+};
+
+export default function StepAccordion({
+  items,
+  numbered = false,
+  defaultOpenId = null,
+  className,
+}: StepAccordionProps) {
+  const [openId, setOpenId] = useState<string | null>(defaultOpenId);
 
   return (
-    <div className="mx-auto max-w-160">
-      {firstVisitSteps.map((key, i) => {
-        const isOpen = openKey === key;
-        const panelId = `step-panel-${key}`;
-        const buttonId = `step-button-${key}`;
+    <div className={cn("w-full", className)}>
+      {items.map((item, i) => {
+        const isOpen = openId === item.id;
+        const panelId = `acc-panel-${item.id}`;
+        const buttonId = `acc-button-${item.id}`;
 
         return (
-          <Arrive key={key} delay={i * 0.05}>
+          <Arrive key={item.id} delay={i * 0.05}>
             <div className="border-sand border-b">
               <button
                 id={buttonId}
                 aria-expanded={isOpen}
                 aria-controls={panelId}
-                onClick={() => setOpenKey(isOpen ? null : key)}
-                className="flex w-full items-center justify-between gap-4 py-5 text-start"
+                onClick={() => setOpenId(isOpen ? null : item.id)}
+                className="flex w-full cursor-pointer items-center justify-between gap-4 py-5 text-start"
               >
                 <span className="flex min-w-0 items-center gap-4">
-                  <span className="font-body text-label text-stone">
-                    {String(i + 1).padStart(2, "0")}
-                  </span>
+                  {numbered && (
+                    <span className="font-heading text-charcoal/25 text-[clamp(1.75rem,3vw,2.5rem)] leading-none tabular-nums">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                  )}
                   <Heading as="h3" size="h3" className="min-w-0">
-                    {t(`${key}.title`)}
+                    {item.title}
                   </Heading>
                 </span>
                 <IconChevronDown
+                  size={20}
+                  aria-hidden="true"
                   className={cn(
-                    "text-stone shrink-0 transition-transform duration-300",
+                    "text-gold shrink-0 transition-transform duration-300",
                     isOpen && "rotate-180"
                   )}
-                  aria-hidden="true"
                 />
               </button>
 
@@ -60,8 +78,14 @@ export default function StepAccordion() {
                     transition={{ duration: 0.35, ease: "easeInOut" }}
                     className="overflow-hidden"
                   >
-                    <Text muted className="ps-6 pb-6 sm:ps-10">
-                      {t(`${key}.desc`)}
+                    <Text
+                      muted
+                      className={cn(
+                        "pb-6 text-pretty",
+                        numbered && "ps-[calc(clamp(1.75rem,3vw,2.5rem)+1rem)]"
+                      )}
+                    >
+                      {item.body}
                     </Text>
                   </motion.div>
                 )}
