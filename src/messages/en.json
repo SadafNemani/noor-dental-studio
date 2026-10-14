@@ -268,7 +268,11 @@
     }
   },
   "about": {
-    "hero": { "eyebrow": "Meet Dr. Noor" },
+    "hero": {
+      "eyebrow": "Meet Dr. Noor",
+      "heading": "Hello, I'm <accent2>Dr. Noor</accent2>.",
+      "role": "Founder & lead dentist"
+    },
     "story": {
       "heading": "A different starting point",
       "body": "I trained believing dentistry should feel like healthcare, not a sales pitch. That's the whole reason Noor exists — a clinic built around explaining things clearly, moving at your pace, and never pushing a treatment you didn't ask about."
@@ -283,8 +287,20 @@
       "item2": "Advanced certification in cosmetic dentistry, Invisalign-certified provider",
       "item3": "12+ years in practice across the UAE"
     },
-    "clinic": { "heading": "The clinic" },
-    "cta": "Book a visit"
+    "clinic": {
+      "heading": "The clinic",
+      "images": {
+        "reception": "Clinic reception area",
+        "treatmentRoom": "A calm treatment room",
+        "detail": "Detail of everyday care essentials",
+        "tools": "Examination instruments on a wooden tray"
+      }
+    },
+    "closing": {
+      "heading": "Come and meet us.",
+      "body": "Bring your questions. We'll take it from there.",
+      "cta": "Book a visit"
+    }
   },
   "contact": {
     "hero": { "heading": "Come talk to us.", "sub": "No pressure, no rushed decisions." },
