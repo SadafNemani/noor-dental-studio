@@ -143,9 +143,9 @@ export default async function AboutPage() {
               {t("clinic.heading")}
             </Heading>
           </Arrive>
-
-          <ClinicGallery />
         </Container>
+
+        <ClinicGallery />
       </section>
 
       <section className="py-10 md:py-28">
@@ -154,7 +154,7 @@ export default async function AboutPage() {
             image="/images/about-corridor.webp"
             heading={t("closing.heading")}
             body={t("closing.body")}
-            ctaLabel={"closing.cta"}
+            ctaLabel={t("closing.cta")}
             ctaHref="/booking"
           />
         </Container>
