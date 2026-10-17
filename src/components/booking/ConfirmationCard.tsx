@@ -1,42 +1,37 @@
 "use client";
 
-import { useLocale, useTranslations } from "next-intl";
+import { useTranslations } from "next-intl";
 import { motion } from "motion/react";
 import Heading from "../typography/Heading";
 import Text from "../typography/Text";
 import Button from "../ui/Button";
-import { nextAvailableDate } from "@/data/timeSlots";
 import { IconCheck } from "@tabler/icons-react";
 
 type ConfirmationCardProps = {
+  dateLabel: string;
   slotLabel: string;
 };
 
-export default function ConfirmationCard({ slotLabel }: ConfirmationCardProps) {
+export default function ConfirmationCard({ dateLabel, slotLabel }: ConfirmationCardProps) {
   const t = useTranslations("booking.confirmation");
-  const locale = useLocale();
-  const formattedDate = new Intl.DateTimeFormat(locale, {
-    weekday: "long",
-    month: "long",
-    day: "numeric",
-  }).format(new Date(nextAvailableDate));
 
   return (
     <motion.div
+      role="status"
       initial={{ opacity: 0, y: 12 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
-      className="mx-auto flex max-w-110 flex-col items-center gap-4 text-center"
+      className="mx-auto flex max-w-110 flex-col items-center gap-4 py-8 text-center"
     >
       <div className="bg-sage/20 flex h-14 w-14 items-center justify-center rounded-full">
-        <IconCheck className="text-sage text-2xl" aria-hidden="true" />
+        <IconCheck size={28} className="text-sage" aria-hidden="true" />
       </div>
       <Heading size="h2">{t("heading")}</Heading>
       <Text className="text-pine" as="span">
-        {formattedDate}, {slotLabel}
+        {dateLabel}, {slotLabel}
       </Text>
       <Text muted>{t("body")}</Text>
-      <Button href="/" variant="secondary" className="border-pine text-pine mt-2">
+      <Button href="/" variant="tertiary" className="text-pine mt-2">
         {t("backHome")}
       </Button>
     </motion.div>

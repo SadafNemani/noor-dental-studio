@@ -1,8 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { AnimatePresence, motion } from "motion/react";
+import { IconArrowLeft } from "@tabler/icons-react";
 import RadioGroup from "../forms/RadioGroup";
 import TimeSlotPicker from "./TimeSlotPicker";
 import FormField from "../forms/FormField";
@@ -11,9 +12,12 @@ import Textarea from "../forms/Textarea";
 import ConfirmationCard from "./ConfirmationCard";
 import Button from "../ui/Button";
 import { timeSlots } from "@/data/timeSlots";
+import { reasonKeys, isReasonKey, type ReasonKey } from "@/data/bookingReasons";
+import { formatDay, formatSlotTime, getNextAvailableDate } from "@/lib/booking";
+import { cn } from "@/lib/cn";
 
 type BookingData = {
-  reason: string | null;
+  reason: ReasonKey | null;
   slot: string | null;
   name: string;
   phone: string;
@@ -21,29 +25,32 @@ type BookingData = {
   notes: string;
 };
 
-const initialData: BookingData = {
-  reason: null,
-  slot: null,
-  name: "",
-  phone: "",
-  email: "",
-  notes: "",
-};
+const FORM_STEPS = 3;
 
-export default function BookingStepper() {
+export default function BookingStepper({
+  initialReason = null,
+}: {
+  initialReason?: ReasonKey | null;
+}) {
   const t = useTranslations("booking");
   const tHelp = useTranslations("home.help");
-  const [step, setStep] = useState(1);
-  const [data, setData] = useState<BookingData>(initialData);
+  const locale = useLocale();
+  const [slotDate] = useState(() => getNextAvailableDate());
+  const [step, setStep] = useState(initialReason ? 2 : 1);
+  const [data, setData] = useState<BookingData>({
+    reason: initialReason,
+    slot: null,
+    name: "",
+    phone: "",
+    email: "",
+    notes: "",
+  });
   const [errors, setErrors] = useState<Partial<Record<"name" | "phone" | "email", string>>>({});
-  const totalSteps = 4;
+  const [stepError, setStepError] = useState<string | null>(null);
 
-  const reasonOptions = [
-    { value: "improveSmile", label: tHelp("improveSmile") },
-    { value: "careForTeeth", label: tHelp("careForTeeth") },
-    { value: "nervous", label: tHelp("nervous") },
-    { value: "needHelpToday", label: tHelp("needHelpToday") },
-  ];
+  const reasonOptions = reasonKeys.map((key) => ({ value: key, label: tHelp(key) }));
+  const dateLabel = formatDay(slotDate, locale);
+  const selectedSlot = timeSlots.find((s) => s.id === data.slot);
 
   function validateStep3() {
     const next: typeof errors = {};
@@ -55,27 +62,51 @@ export default function BookingStepper() {
   }
 
   function goNext() {
-    if (step === 1 && !data.reason) return;
-    if (step === 2 && !data.slot) return;
+    if (step === 1 && !data.reason) {
+      setStepError(t("step1.error"));
+      return;
+    }
+    if (step === 2 && !data.slot) {
+      setStepError(t("step2.error"));
+      return;
+    }
     if (step === 3 && !validateStep3()) return;
-    setStep((s) => Math.min(totalSteps, s + 1));
+    setStepError(null);
+    setStep((s) => s + 1);
   }
 
   function goBack() {
+    setStepError(null);
     setStep((s) => Math.max(1, s - 1));
   }
 
-  const selectedSlot = timeSlots.find((s) => s.id === data.slot);
-
   if (step === 4) {
-    return <ConfirmationCard slotLabel={selectedSlot?.time ?? ""} />;
+    return (
+      <ConfirmationCard
+        dateLabel={dateLabel}
+        slotLabel={selectedSlot ? formatSlotTime(selectedSlot.time, locale) : ""}
+      />
+    );
   }
 
   return (
-    <div className="mx-auto max-w-140">
-      <p className="font-body text-label text-stone mb-6">
-        {t("nav.stepLabel", { current: step, total: totalSteps })}
-      </p>
+    <div className="w-full">
+      <div className="mb-8 flex items-center gap-4">
+        <p aria-label="polite" className="font-body text-label text-stone whitespace-nowrap">
+          {t("nav.stepLabel", { current: step, total: FORM_STEPS })}
+        </p>
+        <div className="flex flex-1 gap-1.5" aria-hidden="true">
+          {Array.from({ length: FORM_STEPS }).map((_, i) => (
+            <span
+              key={i}
+              className={cn(
+                "h-0.5 flex-1 rounded-full transition-colors duration-500",
+                i < step ? "bg-gold" : "bg-sand"
+              )}
+            />
+          ))}
+        </div>
+      </div>
 
       <AnimatePresence mode="wait">
         <motion.div
@@ -91,7 +122,11 @@ export default function BookingStepper() {
               legend={t("step1.legend")}
               options={reasonOptions}
               value={data.reason}
-              onChange={(reason) => setData((d) => ({ ...d, reason }))}
+              onChange={(value) => {
+                if (!isReasonKey(value)) return;
+                setData((d) => ({ ...d, reason: value }));
+                setStepError(null);
+              }}
               variant="card"
             />
           )}
@@ -99,7 +134,11 @@ export default function BookingStepper() {
           {step === 2 && (
             <TimeSlotPicker
               value={data.slot}
-              onChange={(slot) => setData((d) => ({ ...d, slot }))}
+              dayLabel={dateLabel}
+              onChange={(slot) => {
+                setData((d) => ({ ...d, slot }));
+                setStepError(null);
+              }}
             />
           )}
 
@@ -136,15 +175,26 @@ export default function BookingStepper() {
         </motion.div>
       </AnimatePresence>
 
-      <div className="mt-8 flex justify-between">
+      {stepError && (
+        <p role="alert" className="font-body text-label text-error mt-4">
+          {stepError}
+        </p>
+      )}
+
+      <div className="mt-8 flex items-center justify-between">
         {step > 1 ? (
-          <Button variant="secondary" onClick={goBack} className="border-stone text-stone">
+          <button
+            type="button"
+            onClick={goBack}
+            className="text-stone hover:text-charcoal inline-flex cursor-pointer items-center gap-2 text-sm font-medium tracking-wide transition-colors"
+          >
+            <IconArrowLeft size={16} className="rtl:rotate-180" aria-hidden="true" />
             {t("nav.back")}
-          </Button>
+          </button>
         ) : (
           <span />
         )}
-        <Button onClick={goNext}>{step === 3 ? t("nav.confirm") : t("nav.next")}</Button>
+        <Button onClick={goNext}>{step === FORM_STEPS ? t("nav.confirm") : t("nav.next")}</Button>
       </div>
     </div>
   );

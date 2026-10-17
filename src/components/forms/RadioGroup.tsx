@@ -27,7 +27,7 @@ export default function RadioGroup({
       <legend className="font-body text-label text-charcoal mb-1">{legend}</legend>
       <div
         className={cn(
-          variant === "card" ? "grid grid-cols-2 gap-3 sm:grid-cols-4" : "flex flex-col gap-2"
+          variant === "card" ? "grid grid-cols-2 gap-3 sm:grid-cols-2" : "flex flex-col gap-2"
         )}
       >
         {options.map((option) => {
@@ -37,7 +37,7 @@ export default function RadioGroup({
               key={option.label}
               className={cn(
                 "rounded-button-sm flex cursor-pointer items-center gap-2.5 border px-4 py-2.5 transition-colors duration-200",
-                variant === "card" && "rounded-card flex-col justify-center p-4 text-center",
+                variant === "card" && "rounded-card flex-col justify-center p-5 text-center",
                 checked ? "border-pine bg-pine/5" : "hover:border-stone border-s-amber-50 bg-white"
               )}
             >
