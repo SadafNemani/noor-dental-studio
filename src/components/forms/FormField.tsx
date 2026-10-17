@@ -10,7 +10,7 @@ type FormFieldProps = {
   children: ReactElement<{
     id?: string;
     "aria-invalid"?: boolean;
-    "aria-describedBy"?: string;
+    "aria-describedby"?: string;
     required?: boolean;
   }>;
   className?: string;
@@ -25,7 +25,7 @@ export default function FormField({ label, error, required, children, className 
         id: inputId,
         required,
         "aria-invalid": !!error,
-        "aria-describedBy": error ? errorId : undefined,
+        "aria-describedby": error ? errorId : undefined,
       })
     : children;
 

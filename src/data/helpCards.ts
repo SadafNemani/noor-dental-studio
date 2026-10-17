@@ -5,7 +5,12 @@ import ClockDraw from "@/components/motion/icons/ClockDraw";
 
 export const helpCards = [
   { key: "improveSmile", icon: SparkleDraw, layout: "wide", href: "/your-care" },
-  { key: "careForTeeth", icon: ToothDraw, layout: "tall", href: "/booking" },
+  { key: "careForTeeth", icon: ToothDraw, layout: "tall", href: "/booking?reason=careForTeeth" },
   { key: "nervous", icon: HeartHandshakeDraw, layout: "ghost", href: "/first-visit" },
-  { key: "needHelpToday", icon: ClockDraw, layout: "compact", href: "/booking" },
+  {
+    key: "needHelpToday",
+    icon: ClockDraw,
+    layout: "compact",
+    href: "/booking?reason=needHelpToday",
+  },
 ] as const;
