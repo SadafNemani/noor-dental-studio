@@ -196,13 +196,22 @@
     "sliderLabel": "Comparison slider between {before} and {after}"
   },
   "booking": {
-    "step1": { "legend": "What brings you in?" },
+    "page": {
+      "eyebrow": "Book a visit",
+      "heading": "Let's find a time <accent>that suits you</accent>.",
+      "sub": "It takes about two minutes. Pick a reason, a time, and tell us how to reach you.",
+      "asideHeading": "Prefer to talk first?",
+      "asideBody": "Message us on WhatsApp or call — whichever feels easier."
+    },
+    "step1": { "legend": "What brings you in?", "error": "Please choose one to continue." },
     "step2": {
       "legend": "When works for you?",
+      "dayLabel": "Available on {date}",
       "morning": "Morning",
       "afternoon": "Afternoon",
       "evening": "Evening",
-      "unavailable": "Unavailable"
+      "unavailable": "Unavailable",
+      "error": "Please choose a time to continue."
     },
     "step3": {
       "nameLabel": "Full name",
