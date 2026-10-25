@@ -3,7 +3,13 @@ import { NextIntlClientProvider } from "next-intl";
 import { getMessages, setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
-import { fraunces, inter, markaziText, plexArabic } from "@/lib/fonts";
+
+import "@fontsource-variable/fraunces";
+import "@fontsource-variable/fraunces/wght-italic.css";
+import "@fontsource-variable/inter";
+import "@fontsource-variable/markazi-text";
+import "@fontsource/ibm-plex-sans-arabic/400.css";
+import "@fontsource/ibm-plex-sans-arabic/500.css";
 
 import "../globals.css";
 import Navbar from "@/components/layout/Navbar";
@@ -26,8 +32,6 @@ export function generateStaticParams() {
 export default async function LocaleLayout({ children, params }: Props) {
   const { locale } = await params;
 
-  const fontVars = `${fraunces.variable} ${inter.variable} ${markaziText.variable} ${plexArabic.variable}`;
-
   if (!routing.locales.includes(locale as "en" | "ar")) {
     notFound();
   }
@@ -40,7 +44,7 @@ export default async function LocaleLayout({ children, params }: Props) {
 
   return (
     <html lang={locale} dir={isRTL ? "rtl" : "ltr"} suppressHydrationWarning>
-      <body className={fontVars}>
+      <body>
         <NextIntlClientProvider locale={locale} messages={messages}>
           <NavEnvironmentProvider>
             <Navbar />

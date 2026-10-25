@@ -45,16 +45,16 @@
 }
 
 .font-heading {
-  font-family: var(--font-heading-en), serif;
+  font-family: "Fraunces Variable", serif;
 }
 .font-body {
-  font-family: var(--font-body-en), sans-serif;
+  font-family: "Inter Variable", sans-serif;
 }
 [dir="rtl"] .font-heading {
-  font-family: var(--font-heading-ar), serif;
+  font-family: "Markazi Text Variable", serif;
 }
 [dir="rtl"] .font-body {
-  font-family: var(--font-body-ar), sans-serif;
+  font-family: "IBM Plex Sans Arabic", sans-serif;
 }
 
 body {
