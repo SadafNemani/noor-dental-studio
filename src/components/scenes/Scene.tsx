@@ -31,7 +31,7 @@ export default function Scene({
 }: SceneProps) {
   const layoutClasses =
     layout === "pinned"
-      ? cn("absolute inset-0", active ? "opacity-100" : "opacity-0")
+      ? cn("absolute inset-0", active ? "opacity-100" : "pointer-events-none opacity-0")
       : background === "image"
         ? "relative min-h-[80vh] py-16 md:min-h-[85vh] md:py-20"
         : "relative py-16 md:min-h-[85vh] md:py-20";
