@@ -220,7 +220,8 @@
       "notesLabel": "Anything we should know before your visit? (optional)",
       "nameError": "Please enter your name.",
       "phoneError": "Please enter a valid phone number.",
-      "emailError": "Please enter a valid email address."
+      "emailError": "Please enter a valid email address.",
+      "legend": "How can we reach you?"
     },
     "confirmation": {
       "heading": "You're booked.",

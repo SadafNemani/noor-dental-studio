@@ -3,6 +3,7 @@
 import { useLocale, useTranslations } from "next-intl";
 import { timeSlots, type TimeSlot } from "@/data/timeSlots";
 import { formatSlotTime } from "@/lib/booking";
+import Legend from "../forms/Legend";
 import { cn } from "@/lib/cn";
 
 type TimeSlotPickerProps = {
@@ -18,9 +19,8 @@ export default function TimeSlotPicker({ value, onChange, dayLabel }: TimeSlotPi
   const locale = useLocale();
 
   return (
-    <fieldset className="flex flex-col gap-6">
-      <legend className="font-body text-label text-charcoal mb-1">{t("legend")}</legend>
-      <p className="font-body text-label text-stone -mt-3">{t("dayLabel", { date: dayLabel })}</p>
+    <fieldset className="flex min-w-0 flex-col gap-8">
+      <Legend hint={t("dayLabel", { date: dayLabel })}>{t("legend")}</Legend>
       {periods.map((period) => {
         const slots = timeSlots.filter((s) => s.period === period);
         if (slots.length === 0) return null;

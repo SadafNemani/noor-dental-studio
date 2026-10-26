@@ -14,6 +14,8 @@ import Button from "../ui/Button";
 import { timeSlots } from "@/data/timeSlots";
 import { reasonKeys, isReasonKey, type ReasonKey } from "@/data/bookingReasons";
 import { formatDay, formatSlotTime, getNextAvailableDate } from "@/lib/booking";
+import Legend from "../forms/Legend";
+import { helpCards } from "@/data/helpCards";
 import { cn } from "@/lib/cn";
 
 type BookingData = {
@@ -48,7 +50,11 @@ export default function BookingStepper({
   const [errors, setErrors] = useState<Partial<Record<"name" | "phone" | "email", string>>>({});
   const [stepError, setStepError] = useState<string | null>(null);
 
-  const reasonOptions = reasonKeys.map((key) => ({ value: key, label: tHelp(key) }));
+  const reasonOptions = reasonKeys.map((key) => ({
+    value: key,
+    label: tHelp(key),
+    icon: helpCards.find((card) => card.key === key)?.icon,
+  }));
   const dateLabel = formatDay(slotDate, locale);
   const selectedSlot = timeSlots.find((s) => s.id === data.slot);
 
@@ -143,34 +149,37 @@ export default function BookingStepper({
           )}
 
           {step === 3 && (
-            <div className="flex flex-col gap-4">
-              <FormField label={t("step3.nameLabel")} required error={errors.name}>
-                <Input
-                  value={data.name}
-                  onChange={(e) => setData((d) => ({ ...d, name: e.target.value }))}
-                />
-              </FormField>
-              <FormField label={t("step3.phoneLabel")} required error={errors.phone}>
-                <Input
-                  type="tel"
-                  value={data.phone}
-                  onChange={(e) => setData((d) => ({ ...d, phone: e.target.value }))}
-                />
-              </FormField>
-              <FormField label={t("step3.emailLabel")} required error={errors.email}>
-                <Input
-                  type="email"
-                  value={data.email}
-                  onChange={(e) => setData((d) => ({ ...d, email: e.target.value }))}
-                />
-              </FormField>
-              <FormField label={t("step3.notesLabel")}>
-                <Textarea
-                  value={data.notes}
-                  onChange={(e) => setData((d) => ({ ...d, notes: e.target.value }))}
-                />
-              </FormField>
-            </div>
+            <fieldset className="min-w-0">
+              <Legend>{t("step3.legend")}</Legend>
+              <div className="flex flex-col gap-5">
+                <FormField label={t("step3.nameLabel")} required error={errors.name}>
+                  <Input
+                    value={data.name}
+                    onChange={(e) => setData((d) => ({ ...d, name: e.target.value }))}
+                  />
+                </FormField>
+                <FormField label={t("step3.phoneLabel")} required error={errors.phone}>
+                  <Input
+                    type="tel"
+                    value={data.phone}
+                    onChange={(e) => setData((d) => ({ ...d, phone: e.target.value }))}
+                  />
+                </FormField>
+                <FormField label={t("step3.emailLabel")} required error={errors.email}>
+                  <Input
+                    type="email"
+                    value={data.email}
+                    onChange={(e) => setData((d) => ({ ...d, email: e.target.value }))}
+                  />
+                </FormField>
+                <FormField label={t("step3.notesLabel")}>
+                  <Textarea
+                    value={data.notes}
+                    onChange={(e) => setData((d) => ({ ...d, notes: e.target.value }))}
+                  />
+                </FormField>
+              </div>
+            </fieldset>
           )}
         </motion.div>
       </AnimatePresence>
