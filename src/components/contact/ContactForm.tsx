@@ -10,7 +10,6 @@ import Textarea from "../forms/Textarea";
 import Heading from "../typography/Heading";
 import Text from "../typography/Text";
 import Button from "../ui/Button";
-import { type } from "os";
 
 type Values = { name: string; email: string; phone: string; message: string };
 type Errors = Partial<Record<"name" | "email" | "message", string>>;
