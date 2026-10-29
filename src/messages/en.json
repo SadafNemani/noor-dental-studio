@@ -313,9 +313,51 @@
     }
   },
   "contact": {
-    "hero": { "heading": "Come talk to us.", "sub": "No pressure, no rushed decisions." },
-    "hoursLabel": "Hours",
-    "locationLabel": "Location",
-    "quickNote": "Prefer to ask something first? Message us on WhatsApp and we'll get back to you personally."
+    "hero": {
+      "eyebrow": "Contact",
+      "heading": "Come <accent>talk to us</accent>.",
+      "sub": "No pressure, no rushed decisions."
+    },
+    "actions": {
+      "whatsapp": {
+        "title": "WhatsApp",
+        "desc": "The quickest way. We reply personally.",
+        "prefill": "Hello, I have a question about a visit."
+      },
+      "call": { "title": "Call us" },
+      "email": { "title": "Email" }
+    },
+    "form": {
+      "heading": "Send us a message",
+      "note": "Prefer to ask something first? We'll get back to you personally.",
+      "nameLabel": "Full name",
+      "emailLabel": "Email",
+      "phoneLabel": "Phone (optional)",
+      "messageLabel": "How can we help?",
+      "nameError": "Please enter your name.",
+      "emailError": "Please enter a valid email address.",
+      "messageError": "Please write a short message.",
+      "submit": "Send message",
+      "successHeading": "Message sent.",
+      "successBody": "Thank you. We'll get back to you personally.",
+      "another": "Send another message"
+    },
+    "details": {
+      "heading": "Visit us",
+      "hoursLabel": "Hours",
+      "weekdays": "Monday – Saturday",
+      "weekdaysTime": "9:00 am – 8:00 pm",
+      "sunday": "Sunday",
+      "closed": "Closed",
+      "locationLabel": "Location",
+      "address": "Jumeirah, Dubai, UAE",
+      "phoneLabel": "Phone",
+      "emailLabel": "Email"
+    },
+    "map": {
+      "label": "Noor Dental Studio",
+      "ariaLabel": "Illustrated map showing the clinic's location in Jumeirah, Dubai",
+      "directions": "Get directions"
+    }
   }
 }
