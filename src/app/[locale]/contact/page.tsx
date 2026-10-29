@@ -15,7 +15,6 @@ import { clinicInfo } from "@/data/clinicInfo";
 
 export default async function ContactPage() {
   const t = await getTranslations("contact");
-  const tFooter = await getTranslations("footer");
   const whatsappHref = `${clinicInfo.whatsappHref}?text=${encodeURIComponent(t("actions.whatsapp.prefill"))}`;
 
   const dtClass =
@@ -68,7 +67,7 @@ export default async function ContactPage() {
                 href={clinicInfo.phoneHref}
                 icon={IconPhone}
                 title={t("actions.call.title")}
-                detail={<bdi dir="ltr">{tFooter("phone")}</bdi>}
+                detail={<bdi dir="ltr">{clinicInfo.phone}</bdi>}
               />
             </Arrive>
             <Arrive delay={0.16}>
@@ -144,7 +143,7 @@ export default async function ContactPage() {
                         href={clinicInfo.phoneHref}
                         className="hover:text-pine cursor-pointer transition-colors"
                       >
-                        <bdi dir="ltr">{tFooter("phone")}</bdi>
+                        <bdi dir="ltr">{clinicInfo.phone}</bdi>
                       </a>
                     </dd>
                   </div>
