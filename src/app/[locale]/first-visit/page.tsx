@@ -14,6 +14,13 @@ import { richText } from "@/lib/richText";
 import { firstVisitSteps } from "@/data/firstVisitJourney";
 import { firstVisitFaqKeys } from "@/data/faq";
 
+import { buildPageMetadata } from "@/lib/seo";
+
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  return buildPageMetadata({ locale, page: "firstVisit" });
+}
+
 const points = [
   { key: "pause", icon: IconHandStop },
   { key: "ask", icon: IconMessageCircle },

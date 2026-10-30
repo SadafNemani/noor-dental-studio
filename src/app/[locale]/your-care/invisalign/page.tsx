@@ -14,6 +14,13 @@ import { richText } from "@/lib/richText";
 import CompareGallery from "@/components/compare/CompareGallery";
 import { IconCoin } from "@tabler/icons-react";
 
+import { buildPageMetadata } from "@/lib/seo";
+
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  return buildPageMetadata({ locale, page: "invisalign" });
+}
+
 export default async function InvisalignPage() {
   const t = await getTranslations("invisalign");
 

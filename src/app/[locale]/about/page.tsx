@@ -9,6 +9,13 @@ import Footer from "@/components/layout/Footer";
 import SolidNavTrigger from "@/components/layout/SolidNavTrigger";
 import { richText } from "@/lib/richText";
 
+import { buildPageMetadata } from "@/lib/seo";
+
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  return buildPageMetadata({ locale, page: "about" });
+}
+
 const credentialKeys = ["item1", "item2", "item3"] as const;
 
 export default async function AboutPage() {

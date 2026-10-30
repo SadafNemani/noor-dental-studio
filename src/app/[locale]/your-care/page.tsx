@@ -13,6 +13,13 @@ import WhyNoorPillars from "@/components/care/WhyNoorPillars";
 import ClosingBanner from "@/components/care/ClosingBanner";
 import SplitCTA from "@/components/shared/SplitCTA";
 
+import { buildPageMetadata } from "@/lib/seo";
+
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  return buildPageMetadata({ locale, page: "yourCare" });
+}
+
 export default async function YourCarePage() {
   const t = await getTranslations("yourCare");
 

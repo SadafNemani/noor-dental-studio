@@ -13,6 +13,13 @@ import SolidNavTrigger from "@/components/layout/SolidNavTrigger";
 import { richText } from "@/lib/richText";
 import { clinicInfo } from "@/data/clinicInfo";
 
+import { buildPageMetadata } from "@/lib/seo";
+
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  return buildPageMetadata({ locale, page: "contact" });
+}
+
 export default async function ContactPage() {
   const t = await getTranslations("contact");
   const whatsappHref = `${clinicInfo.whatsappHref}?text=${encodeURIComponent(t("actions.whatsapp.prefill"))}`;

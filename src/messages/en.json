@@ -1,4 +1,35 @@
 {
+  "meta": {
+    "siteName": "Noor Dental Studio",
+    "home": {
+      "title": "Noor Dental Studio | A calmer way to care for your smile",
+      "description": "Thoughtful dentistry, clear treatment plans, and a team that never rushes you. Invisalign and cosmetic dentistry in Jumeirah, Dubai."
+    },
+    "yourCare": {
+      "title": "Your care",
+      "description": "Explore Invisalign, smile design and whitening, and find the treatment that feels right for you."
+    },
+    "invisalign": {
+      "title": "Invisalign",
+      "description": "See how Invisalign works at Noor, from digital scan to final reveal, with real before-and-after results and honest pricing guidance."
+    },
+    "firstVisit": {
+      "title": "Your first visit",
+      "description": "Wondering what happens at a first dental visit? Here's exactly what to expect, step by step, with no surprises."
+    },
+    "about": {
+      "title": "About Dr. Noor",
+      "description": "Meet Dr. Noor and the philosophy behind Noor Dental Studio: clear, calm, personal dentistry."
+    },
+    "booking": {
+      "title": "Book a visit",
+      "description": "Choose a reason, pick a time and tell us how to reach you. Booking takes about two minutes."
+    },
+    "contact": {
+      "title": "Contact",
+      "description": "Message us on WhatsApp, call, or send a note. Find our hours and location in Jumeirah, Dubai."
+    }
+  },
   "nav": {
     "home": "Home",
     "yourCare": "Your care",

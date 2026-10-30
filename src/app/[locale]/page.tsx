@@ -16,6 +16,13 @@ import { richText } from "@/lib/richText";
 import AtmosphereWash from "@/components/motion/AtmoshphereWash";
 import VeilRevealBackground from "@/components/home/VeilRevealBackground";
 
+import { buildPageMetadata } from "@/lib/seo";
+
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  return buildPageMetadata({ locale, page: "home" });
+}
+
 export default async function HomePage() {
   const t = await getTranslations("home.hero");
   const tClosing = await getTranslations("home.closing");

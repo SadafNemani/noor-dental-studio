@@ -12,6 +12,13 @@ import { richText } from "@/lib/richText";
 import { clinicInfo } from "@/data/clinicInfo";
 import { isReasonKey } from "@/data/bookingReasons";
 
+import { buildPageMetadata } from "@/lib/seo";
+
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  return buildPageMetadata({ locale, page: "booking" });
+}
+
 const contactRows = [
   { key: "hours", icon: IconClock, href: null },
   { key: "location", icon: IconMapPin, href: null },
