@@ -14,6 +14,7 @@ import "@fontsource/ibm-plex-sans-arabic/500.css";
 import "../globals.css";
 import Navbar from "@/components/layout/Navbar";
 import { NavEnvironmentProvider } from "@/context/NavEnvironmentContext";
+import DemoBanner from "@/components/layout/DemoBanner";
 
 export const metadata: Metadata = {
   title: "Noor Dental Studio",
@@ -49,6 +50,7 @@ export default async function LocaleLayout({ children, params }: Props) {
           <NavEnvironmentProvider>
             <Navbar />
             {children}
+            <DemoBanner />
           </NavEnvironmentProvider>
         </NextIntlClientProvider>
       </body>

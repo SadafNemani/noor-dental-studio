@@ -359,5 +359,11 @@
       "ariaLabel": "Illustrated map showing the clinic's location in Jumeirah, Dubai",
       "directions": "Get directions"
     }
+  },
+  "demoBanner": {
+    "label": "Concept demo",
+    "text": "<b>This is a concept demo</b> — no real bookings or messages are sent.",
+    "cta": "Like what you see? Let's talk",
+    "dismiss": "Dismiss banner"
   }
 }
