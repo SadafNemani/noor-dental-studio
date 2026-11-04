@@ -13,6 +13,7 @@ const twMerge = extendTailwindMerge({
             "pine",
             "pine-deep",
             "gold",
+            "gold-ink",
             "charcoal",
             "stone",
             "mist",
