@@ -37,7 +37,11 @@
     "contact": "Contact",
     "bookAVisit": "Book a visit",
     "whatsappLabel": "WhatsApp",
-    "callLabel": "Call the clinic"
+    "callLabel": "Call the clinic",
+    "menu": "Menu",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "language": "Language"
   },
   "footer": {
     "hours": "Mon–Sat, 9am–8pm",

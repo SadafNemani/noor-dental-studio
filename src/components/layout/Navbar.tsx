@@ -9,6 +9,8 @@ import { useNavEnvironment } from "@/context/NavEnvironmentContext";
 import Button from "@/components/ui/Button";
 import LangToggle from "@/components/ui/LangToggle";
 import { clinicInfo } from "@/data/clinicInfo";
+import { navItems } from "@/data/navItems";
+import MobileMenu from "./MobileMenu";
 
 const envStyles = {
   image: {
@@ -46,13 +48,6 @@ export default function Navbar() {
   const { environment } = useNavEnvironment();
   const t = useTranslations("nav");
 
-  const navItems = [
-    { href: "/", label: t("home") },
-    { href: "/your-care", label: t("yourCare") },
-    { href: "/about", label: t("about") },
-    { href: "/contact", label: t("contact") },
-  ];
-
   return (
     <header dir={isRTL ? "rtl" : "ltr"} className="fixed inset-x-0 top-0 z-100 mx-[3vw]">
       <motion.div
@@ -67,29 +62,33 @@ export default function Navbar() {
         <nav className="hidden gap-8 text-sm font-medium tracking-wide md:flex">
           {navItems.map((item) => (
             <Link key={item.href} href={item.href} className="transition-opacity hover:opacity-70">
-              {item.label}
+              {t(item.key)}
             </Link>
           ))}
         </nav>
 
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-2 md:gap-4">
+          <div className="hidden md:block">
+            <LangToggle />
+          </div>
           <a
             href={clinicInfo.whatsappHref}
             aria-label={t("whatsappLabel")}
-            className="hidden opacity-60 transition-opacity hover:opacity-100 sm:inline"
+            className="hidden opacity-60 transition-opacity hover:opacity-100 md:inline"
           >
             <IconBrandWhatsapp size={17} aria-hidden="true" />
           </a>
           <a
             href={clinicInfo.phoneHref}
             aria-label={t("callLabel")}
-            className="hidden opacity-60 transition-opacity hover:opacity-100 sm:inline"
+            className="hidden opacity-60 transition-opacity hover:opacity-100 md:inline"
           >
             <IconPhone size={17} aria-hidden="true" />
           </a>
-          <LangToggle />
-
-          <Button href="/booking">{t("bookAVisit")}</Button>
+          <Button href="/booking" className="ps-4 md:ps-6">
+            {t("bookAVisit")}
+          </Button>
+          <MobileMenu />
         </div>
       </motion.div>
     </header>

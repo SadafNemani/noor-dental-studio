@@ -195,3 +195,22 @@ body {
 .animate-bounce-diagonal {
   animation: bounce-diagonal 1.8s ease-in-out infinite;
 }
+
+/* Mobile Menu */
+body:has(dialog.menu-dialog[open]) {
+  overflow: hidden;
+}
+.menu-dialog[open] {
+  animation: menu-in 0.35s ease-out;
+}
+@keyframes menu-in {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .menu-dialog[open] {
+    animation: none;
+  }
+}

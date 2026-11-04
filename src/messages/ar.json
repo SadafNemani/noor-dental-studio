@@ -37,7 +37,11 @@
     "contact": "تواصل معنا",
     "bookAVisit": "احجز زيارة",
     "whatsappLabel": "واتساب",
-    "callLabel": "اتصل بالعيادة"
+    "callLabel": "اتصل بالعيادة",
+    "menu": "القائمة",
+    "openMenu": "فتح القائمة",
+    "closeMenu": "إغلاق القائمة",
+    "language": "اللغة"
   },
   "footer": {
     "hours": "الإثنين–السبت، 9 صباحًا–8 مساءً",
