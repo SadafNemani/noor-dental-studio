@@ -14,13 +14,16 @@ import { richText } from "@/lib/richText";
 import { clinicInfo } from "@/data/clinicInfo";
 
 import { buildPageMetadata } from "@/lib/seo";
+import { setRequestLocale } from "next-intl/server";
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   return buildPageMetadata({ locale, page: "contact" });
 }
 
-export default async function ContactPage() {
+export default async function ContactPage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  setRequestLocale(locale);
   const t = await getTranslations("contact");
   const whatsappHref = `${clinicInfo.whatsappHref}?text=${encodeURIComponent(t("actions.whatsapp.prefill"))}`;
 

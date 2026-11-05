@@ -14,13 +14,16 @@ import ClosingBanner from "@/components/care/ClosingBanner";
 import SplitCTA from "@/components/shared/SplitCTA";
 
 import { buildPageMetadata } from "@/lib/seo";
+import { setRequestLocale } from "next-intl/server";
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   return buildPageMetadata({ locale, page: "yourCare" });
 }
 
-export default async function YourCarePage() {
+export default async function YourCarePage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  setRequestLocale(locale);
   const t = await getTranslations("yourCare");
 
   return (

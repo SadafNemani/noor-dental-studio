@@ -15,6 +15,7 @@ import { firstVisitSteps } from "@/data/firstVisitJourney";
 import { firstVisitFaqKeys } from "@/data/faq";
 
 import { buildPageMetadata } from "@/lib/seo";
+import { setRequestLocale } from "next-intl/server";
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
@@ -27,7 +28,9 @@ const points = [
   { key: "choose", icon: IconAdjustmentsHorizontal },
 ] as const;
 
-export default async function FirstVisitPage() {
+export default async function FirstVisitPage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  setRequestLocale(locale);
   const t = await getTranslations("firstVisit");
 
   const steps = firstVisitSteps.map((key) => ({

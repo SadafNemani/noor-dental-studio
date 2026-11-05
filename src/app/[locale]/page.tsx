@@ -17,20 +17,23 @@ import AtmosphereWash from "@/components/motion/AtmoshphereWash";
 import VeilRevealBackground from "@/components/home/VeilRevealBackground";
 
 import { buildPageMetadata } from "@/lib/seo";
+import { setRequestLocale } from "next-intl/server";
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   return buildPageMetadata({ locale, page: "home" });
 }
 
-export default async function HomePage() {
+export default async function HomePage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  setRequestLocale(locale);
   const t = await getTranslations("home.hero");
   const tClosing = await getTranslations("home.closing");
 
   return (
     <>
       <PinnedSceneSystem>
-        <Scene background="image" image="/images/home-hero.webp" mirrorInRtl>
+        <Scene background="image" image="/images/home-hero.webp" mirrorInRtl imagePriority>
           <div className="relative flex flex-col gap-10 pt-24 md:h-[72vh] md:justify-between md:gap-5 md:pt-10">
             <Arrive>
               <span className="font-body text-ivory/80 text-[11px] font-medium tracking-[0.18em] uppercase">

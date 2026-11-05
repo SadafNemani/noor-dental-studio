@@ -15,13 +15,16 @@ import CompareGallery from "@/components/compare/CompareGallery";
 import { IconCoin } from "@tabler/icons-react";
 
 import { buildPageMetadata } from "@/lib/seo";
+import { setRequestLocale } from "next-intl/server";
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   return buildPageMetadata({ locale, page: "invisalign" });
 }
 
-export default async function InvisalignPage() {
+export default async function InvisalignPage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  setRequestLocale(locale);
   const t = await getTranslations("invisalign");
 
   return (
