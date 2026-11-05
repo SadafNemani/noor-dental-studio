@@ -1,10 +1,12 @@
 "use client";
 import { SceneActiveProvider } from "@/context/SceneActiveContext";
 import { cn } from "@/lib/cn";
+import Image from "next/image";
 
 type SceneProps = {
   background: "dark" | "light" | "image";
   image?: string;
+  imagePriority?: boolean;
   active?: boolean;
   layout?: "pinned" | "flow";
   backgroundEffect?: React.ReactNode;
@@ -22,6 +24,7 @@ const bgClasses: Record<SceneProps["background"], string> = {
 export default function Scene({
   background,
   image,
+  imagePriority,
   active = true,
   layout = "pinned",
   backgroundEffect,
@@ -52,10 +55,17 @@ export default function Scene({
     >
       {background === "image" && (
         <>
-          <div
-            className={cn("absolute inset-0 bg-cover bg-center", mirrorInRtl && "rtl:scale-x-[-1]")}
-            style={image ? { backgroundImage: `url(${image})` } : undefined}
-          />
+          {image && (
+            <Image
+              src={image}
+              alt=""
+              fill
+              loading={imagePriority ? "eager" : undefined}
+              fetchPriority={imagePriority ? "high" : undefined}
+              sizes="100vw"
+              className={cn("object-scale-down object-center", mirrorInRtl && "rtl:scale-x-[-1]")}
+            />
+          )}
           <div className="bg-pine-deep/40 absolute inset-0" />
           <div className="absolute inset-0 bg-linear-to-b from-black/45 via-black/20 to-black/50 md:hidden" />
         </>
