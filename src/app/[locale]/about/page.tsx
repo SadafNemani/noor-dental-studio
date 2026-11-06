@@ -5,7 +5,6 @@ import Heading from "@/components/typography/Heading";
 import Arrive from "@/components/motion/Arrive";
 import ClinicGallery from "@/components/about/ClinicGallery";
 import SplitCTA from "@/components/shared/SplitCTA";
-import Footer from "@/components/layout/Footer";
 import SolidNavTrigger from "@/components/layout/SolidNavTrigger";
 import { richText } from "@/lib/richText";
 
@@ -169,8 +168,6 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
           />
         </Container>
       </section>
-
-      <Footer />
     </>
   );
 }

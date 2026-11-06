@@ -8,7 +8,6 @@ import Button from "@/components/ui/Button";
 import ScrollCue from "@/components/care/ScrollCue";
 import StepJourney from "@/components/journey/StepJourney";
 import SplitCTA from "@/components/shared/SplitCTA";
-import Footer from "@/components/layout/Footer";
 import SolidNavTrigger from "@/components/layout/SolidNavTrigger";
 import { richText } from "@/lib/richText";
 import CompareGallery from "@/components/compare/CompareGallery";
@@ -179,8 +178,6 @@ export default async function InvisalignPage({ params }: { params: Promise<{ loc
           />
         </Container>
       </section>
-
-      <Footer />
     </>
   );
 }

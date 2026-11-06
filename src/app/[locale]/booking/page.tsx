@@ -6,7 +6,6 @@ import Heading from "@/components/typography/Heading";
 import Text from "@/components/typography/Text";
 import Arrive from "@/components/motion/Arrive";
 import BookingStepper from "@/components/booking/BookingStepper";
-import Footer from "@/components/layout/Footer";
 import SolidNavTrigger from "@/components/layout/SolidNavTrigger";
 import { richText } from "@/lib/richText";
 import { clinicInfo } from "@/data/clinicInfo";
@@ -117,8 +116,6 @@ export default async function BookingPage({
           </div>
         </Container>
       </section>
-
-      <Footer />
     </>
   );
 }

@@ -8,7 +8,6 @@ import Arrive from "@/components/motion/Arrive";
 import ActionCard from "@/components/contact/ActionCard";
 import ContactForm from "@/components/contact/ContactForm";
 import StaticMap from "@/components/contact/StaticMap";
-import Footer from "@/components/layout/Footer";
 import SolidNavTrigger from "@/components/layout/SolidNavTrigger";
 import { richText } from "@/lib/richText";
 import { clinicInfo } from "@/data/clinicInfo";
@@ -190,8 +189,6 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
           </div>
         </Container>
       </section>
-
-      <Footer />
     </>
   );
 }

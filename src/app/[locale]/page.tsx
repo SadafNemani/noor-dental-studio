@@ -9,7 +9,6 @@ import HelpCardGrid from "@/components/home/HelpCardGrid";
 import PillarsRow from "@/components/home/PillarsRow";
 import DoctorTeaser from "@/components/home/DoctorTeaser";
 import TreatmentTeaser from "@/components/home/TreatmentTeaser";
-import Footer from "@/components/layout/Footer";
 import Container from "@/components/layout/Container";
 import { getTranslations } from "next-intl/server";
 import { richText } from "@/lib/richText";
@@ -103,8 +102,6 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
 
         <Button href="/booking">{tClosing("cta")}</Button>
       </section>
-
-      <Footer />
     </>
   );
 }

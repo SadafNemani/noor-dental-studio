@@ -6,7 +6,6 @@ import Text from "@/components/typography/Text";
 import Arrive from "@/components/motion/Arrive";
 import TreatmentSelector from "@/components/care/TreatmentSelector";
 import ScrollCue from "@/components/care/ScrollCue";
-import Footer from "@/components/layout/Footer";
 import SolidNavTrigger from "@/components/layout/SolidNavTrigger";
 import { richText } from "@/lib/richText";
 import WhyNoorPillars from "@/components/care/WhyNoorPillars";
@@ -95,8 +94,6 @@ export default async function YourCarePage({ params }: { params: Promise<{ local
       <WhyNoorPillars />
 
       <ClosingBanner />
-
-      <Footer />
     </>
   );
 }

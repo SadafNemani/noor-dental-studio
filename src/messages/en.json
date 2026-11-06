@@ -41,7 +41,8 @@
     "menu": "Menu",
     "openMenu": "Open menu",
     "closeMenu": "Close menu",
-    "language": "Language"
+    "language": "Language",
+    "skipToContent": "Skip to content"
   },
   "footer": {
     "hours": "Mon–Sat, 9am–8pm",

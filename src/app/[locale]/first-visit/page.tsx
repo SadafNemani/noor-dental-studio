@@ -8,7 +8,6 @@ import Arrive from "@/components/motion/Arrive";
 import AtmosphereWash from "@/components/motion/AtmoshphereWash";
 import StepAccordion from "@/components/journey/StepAccordion";
 import SplitCTA from "@/components/shared/SplitCTA";
-import Footer from "@/components/layout/Footer";
 import SolidNavTrigger from "@/components/layout/SolidNavTrigger";
 import { richText } from "@/lib/richText";
 import { firstVisitSteps } from "@/data/firstVisitJourney";
@@ -149,8 +148,6 @@ export default async function FirstVisitPage({ params }: { params: Promise<{ loc
           />
         </Container>
       </section>
-
-      <Footer />
     </>
   );
 }
