@@ -18,7 +18,7 @@ type SceneProps = {
 const bgClasses: Record<SceneProps["background"], string> = {
   dark: "bg-gradient-to-br from-pine-deep to-pine text-ivory",
   light: "bg-gradient-to-b from-ivory to-[#F3ECDF] text-charcoal",
-  image: "bg-cover bg-center text-ivory",
+  image: "text-ivory",
 };
 
 export default function Scene({
@@ -49,7 +49,6 @@ export default function Scene({
       )}
       data-layout={layout}
       style={{
-        ...(background === "image" && image ? { backgroundImage: `url(${image})` } : {}),
         ...(layout === "flow" ? { ["--scene-progress" as string]: 1 } : {}),
       }}
     >
@@ -60,10 +59,10 @@ export default function Scene({
               src={image}
               alt=""
               fill
-              loading={imagePriority ? "eager" : undefined}
-              fetchPriority={imagePriority ? "high" : undefined}
+              loading={imagePriority ? "eager" : "lazy"}
+              fetchPriority={imagePriority ? "high" : "auto"}
               sizes="100vw"
-              className={cn("object-scale-down object-center", mirrorInRtl && "rtl:scale-x-[-1]")}
+              className={cn("object-cover object-center", mirrorInRtl && "rtl:scale-x-[-1]")}
             />
           )}
           <div className="bg-pine-deep/40 absolute inset-0" />

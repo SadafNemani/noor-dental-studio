@@ -20,6 +20,7 @@ export default function DoctorTeaser() {
           width={832}
           height={1248}
           style={{ aspectRatio: "832/1248" }}
+          sizes="(min-width: 768px) 560px, 92vw"
         />
       </Arrive>
 
